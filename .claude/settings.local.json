@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Read(//Users/wongtran/**)",
+      "Bash(python -m markitdown /Users/wongtran/Downloads/vast-diagrams/VAST-Network-Topology-v3.pptx)",
+      "Bash(python3 -m markitdown /Users/wongtran/Downloads/vast-diagrams/VAST-Network-Topology-v3.pptx)",
+      "Bash(pip3 install:*)",
+      "Bash(ls /Users/wongtran/Downloads/*.svg)"
+    ]
+  }
+}
