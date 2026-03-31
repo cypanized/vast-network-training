@@ -694,6 +694,47 @@ Slave queue ID: 0
 <!-- CONFIG: Mgmt via Bond -->
 <div id="cn-config-bond" style="display:none">
 
+<div class="server-panel">
+<svg viewBox="0 0 680 110" width="100%" xmlns="http://www.w3.org/2000/svg" style="display:block">
+  <rect x="1" y="1" width="678" height="108" rx="8" fill="#F1EFE8" stroke="#d3d1c7" stroke-width="1"/>
+  <text x="340" y="14" text-anchor="middle" font-size="8" fill="#c2c0b6" font-family="sans-serif">CBox — 1U (mgmt via bond)</text>
+
+  <!-- FRONT END NIC -->
+  <g class="port-group">
+    <rect x="82" y="21" width="252" height="38" rx="6" fill="#E6F1FB" stroke="#85B7EB" stroke-width="1"/>
+    <text x="208" y="35" text-anchor="middle" font-size="9" fill="#0C447C" font-weight="600" font-family="sans-serif">Front End Interface</text>
+    <rect x="94" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#85B7EB" stroke-width=".8"/>
+    <text x="148" y="51" text-anchor="middle" font-size="8" fill="#185FA5" font-family="sans-serif">enp65s0f0</text>
+    <rect x="210" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#85B7EB" stroke-width=".8"/>
+    <text x="264" y="51" text-anchor="middle" font-size="8" fill="#185FA5" font-family="sans-serif">enp65s0f1</text>
+  </g>
+
+  <!-- BACKEND NIC (mgmt on bond0) -->
+  <g class="port-group">
+    <rect x="350" y="21" width="252" height="38" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+    <text x="476" y="35" text-anchor="middle" font-size="9" fill="#085041" font-weight="600" font-family="sans-serif">Backend Interface</text>
+    <rect x="362" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#0F6E56" stroke-width=".8"/>
+    <text x="416" y="51" text-anchor="middle" font-size="8" fill="#0F6E56" font-family="sans-serif">enp1s0f0</text>
+    <rect x="478" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#0F6E56" stroke-width=".8"/>
+    <text x="532" y="51" text-anchor="middle" font-size="8" fill="#0F6E56" font-family="sans-serif">enp1s0f1</text>
+  </g>
+
+  <!-- GIGABIT PORTS -->
+  <g class="port-group">
+    <rect x="82" y="69" width="520" height="32" rx="6" fill="#F7F6F3" stroke="#c2c0b6" stroke-width="1"/>
+    <text x="110" y="89" text-anchor="start" font-size="9" fill="#5F5E5A" font-weight="600" font-family="sans-serif">Gigabit Interface</text>
+    <rect x="260" y="74" width="56" height="22" rx="3" fill="#fff" stroke="#c2c0b6" stroke-width=".8"/>
+    <text x="288" y="89" text-anchor="middle" font-size="6" fill="#8A8985" font-family="sans-serif">194f0</text>
+    <rect x="324" y="74" width="50" height="22" rx="3" fill="#fff" stroke="#c2c0b6" stroke-width=".8"/>
+    <text x="349" y="89" text-anchor="middle" font-size="6" fill="#8A8985" font-family="sans-serif">194f1</text>
+    <rect x="382" y="74" width="50" height="22" rx="3" fill="#fff" stroke="#c2c0b6" stroke-width=".8"/>
+    <text x="407" y="89" text-anchor="middle" font-size="6" fill="#8A8985" font-family="sans-serif">193f0</text>
+    <rect x="440" y="74" width="50" height="22" rx="3" fill="#fff" stroke="#c2c0b6" stroke-width=".8"/>
+    <text x="465" y="89" text-anchor="middle" font-size="6" fill="#8A8985" font-family="sans-serif">193f1</text>
+  </g>
+</svg>
+</div>
+
 <div class="tabs" id="cn-tabs-b">
   <button class="tab active" onclick="showCnTabB('cnb-diagram',this)">Interface map</button>
   <button class="tab" onclick="showCnTabB('cnb-lshw',this)">lshw</button>
@@ -1755,6 +1796,47 @@ Slave queue ID: 0
 
 <!-- CONFIG: Mgmt via Bond -->
 <div id="eb-config-bond" style="display:none">
+
+<div class="server-panel">
+<svg viewBox="0 0 680 110" width="100%" xmlns="http://www.w3.org/2000/svg" style="display:block">
+  <rect x="1" y="1" width="678" height="108" rx="8" fill="#F1EFE8" stroke="#d3d1c7" stroke-width="1"/>
+  <text x="340" y="14" text-anchor="middle" font-size="8" fill="#c2c0b6" font-family="sans-serif">EBox — 1U (mgmt via bond)</text>
+
+  <!-- FRONT END NIC -->
+  <g class="port-group">
+    <rect x="82" y="21" width="252" height="38" rx="6" fill="#E6F1FB" stroke="#85B7EB" stroke-width="1"/>
+    <text x="208" y="35" text-anchor="middle" font-size="9" fill="#0C447C" font-weight="600" font-family="sans-serif">Front End Interface</text>
+    <rect x="94" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#85B7EB" stroke-width=".8"/>
+    <text x="148" y="51" text-anchor="middle" font-size="8" fill="#185FA5" font-family="sans-serif">enp65s0f0</text>
+    <rect x="210" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#85B7EB" stroke-width=".8"/>
+    <text x="264" y="51" text-anchor="middle" font-size="8" fill="#185FA5" font-family="sans-serif">enp65s0f1</text>
+  </g>
+
+  <!-- BACKEND NIC -->
+  <g class="port-group">
+    <rect x="350" y="21" width="252" height="38" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+    <text x="476" y="35" text-anchor="middle" font-size="9" fill="#085041" font-weight="600" font-family="sans-serif">Backend Interface</text>
+    <rect x="362" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#0F6E56" stroke-width=".8"/>
+    <text x="416" y="51" text-anchor="middle" font-size="8" fill="#0F6E56" font-family="sans-serif">enp1s0f0</text>
+    <rect x="478" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#0F6E56" stroke-width=".8"/>
+    <text x="532" y="51" text-anchor="middle" font-size="8" fill="#0F6E56" font-family="sans-serif">enp1s0f1</text>
+  </g>
+
+  <!-- GIGABIT PORTS -->
+  <g class="port-group">
+    <rect x="82" y="69" width="520" height="32" rx="6" fill="#F7F6F3" stroke="#c2c0b6" stroke-width="1"/>
+    <text x="110" y="89" text-anchor="start" font-size="9" fill="#5F5E5A" font-weight="600" font-family="sans-serif">Gigabit Interface</text>
+    <rect x="260" y="74" width="56" height="22" rx="3" fill="#fff" stroke="#c2c0b6" stroke-width=".8"/>
+    <text x="288" y="89" text-anchor="middle" font-size="6" fill="#8A8985" font-family="sans-serif">194f0</text>
+    <rect x="324" y="74" width="50" height="22" rx="3" fill="#fff" stroke="#c2c0b6" stroke-width=".8"/>
+    <text x="349" y="89" text-anchor="middle" font-size="6" fill="#8A8985" font-family="sans-serif">194f1</text>
+    <rect x="382" y="74" width="50" height="22" rx="3" fill="#fff" stroke="#c2c0b6" stroke-width=".8"/>
+    <text x="407" y="89" text-anchor="middle" font-size="6" fill="#8A8985" font-family="sans-serif">193f0</text>
+    <rect x="440" y="74" width="50" height="22" rx="3" fill="#fff" stroke="#c2c0b6" stroke-width=".8"/>
+    <text x="465" y="89" text-anchor="middle" font-size="6" fill="#8A8985" font-family="sans-serif">193f1</text>
+  </g>
+</svg>
+</div>
 
 <div class="tabs" id="eb-tabs-b">
   <button class="tab active" onclick="showEbTabB('ebb-diagram',this)">Interface map</button>
@@ -2849,7 +2931,7 @@ Slave queue ID: 0
 </div>
 
 <div style="text-align:center;padding:12px 0 4px">
-  <span style="font-size:13px;color:var(--text3)">These designs map to the "Connected" and "Isolated" modes in →</span>
+  <span style="font-size:13px;color:var(--text3)">These designs map to the "Converged" and "Split" modes in →</span>
   <a onclick="switchPage('topo',document.querySelector('[onclick*=switchPage][onclick*=topo]'))" style="font-size:13px;color:var(--accent);cursor:pointer;margin-left:6px;font-weight:500;text-decoration:underline">L2 / L3 Topologies</a>
 </div>
 
@@ -2896,9 +2978,9 @@ Slave queue ID: 0
 <!-- Sub-options row: isolated / connected + server type -->
 <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:14px">
   <div class="topo-toggle-row" id="conn-toggle" style="margin-bottom:0">
-    <span style="font-weight:500;color:var(--text)">Uplink:</span>
-    <label id="tog-iso" class="active" onclick="setTopoConn('iso')"><input type="radio" name="conn" checked> Isolated</label>
-    <label id="tog-conn" onclick="setTopoConn('conn')"><input type="radio" name="conn"> Connected</label>
+    <span style="font-weight:500;color:var(--text)">Mode:</span>
+    <label id="tog-iso" class="active" onclick="setTopoConn('iso')"><input type="radio" name="conn" checked> Split</label>
+    <label id="tog-conn" onclick="setTopoConn('conn')"><input type="radio" name="conn"> Converged</label>
   </div>
   <div style="width:1px;height:24px;background:var(--border)"></div>
   <div class="topo-toggle-row" style="margin-bottom:0">
@@ -3080,10 +3162,10 @@ const detailContent={
       <h4>L2 Topologies</h4>
       <p>Four standard Layer 2 fabric patterns for VAST Data deployments:</p>
       <ul>
-        <li><strong>Spine-leaf isolated</strong> — VAST fabric has no uplink to customer network. Servers dual-home to both fabrics separately.</li>
-        <li><strong>Spine-leaf connected</strong> — Spines cross-connect to customer MLAG pair. Single fabric entry point.</li>
-        <li><strong>Pair switches isolated</strong> — Simpler MLAG pair without spine layer. Not connected to customer.</li>
-        <li><strong>Pair switches connected</strong> — MLAG pair cross-connects to customer switches.</li>
+        <li><strong>Spine-leaf split</strong> — VAST fabric has no uplink to customer network. Servers dual-home to both fabrics separately.</li>
+        <li><strong>Spine-leaf converged</strong> — Spines cross-connect to customer MLAG pair. Single fabric entry point.</li>
+        <li><strong>Pair switches split</strong> — Simpler MLAG pair without spine layer. Not connected to customer.</li>
+        <li><strong>Pair switches converged</strong> — MLAG pair cross-connects to customer switches.</li>
       </ul>
     </div>
     <div class="detail-divider"></div>
@@ -3112,8 +3194,8 @@ const detailContent={
         <li>All servers <strong>dual-home</strong> for redundancy</li>
         <li>MLAG peer links (dashed lines) provide inter-switch communication between paired switches</li>
         <li>Full mesh between leaf and spine layers ensures equal-cost multipath</li>
-        <li>"Isolated" means VAST fabric is air-gapped from customer LAN — servers bridge the domains</li>
-        <li>"Connected" means fabric uplinks to customer switches directly</li>
+        <li>"Split" means VAST fabric is air-gapped from customer LAN — servers bridge the domains</li>
+        <li>"Converged" means fabric uplinks to customer switches directly</li>
       </ul>
     </div>
   `,
@@ -3163,7 +3245,7 @@ const detailContent={
         <li>More switches required — customer pair + VAST leaf pair</li>
         <li>More complex cabling — separate uplinks to two switch tiers</li>
       </ul>
-      <p style="margin-top:8px;padding:8px 10px;border-radius:6px;background:#FFF7ED;border-left:3px solid #f97316;font-size:12px"><strong>Topology mapping:</strong> Split = "Isolated" in the L2/L3 Topology page. Converged = "Connected".</p>
+      <p style="margin-top:8px;padding:8px 10px;border-radius:6px;background:#FFF7ED;border-left:3px solid #f97316;font-size:12px"><strong>Topology mapping:</strong> Split and Converged modes correspond to the topology options in the L2/L3 page.</p>
     </div>
   `
 };
@@ -3413,22 +3495,22 @@ function highlightDnPort(type){
 /* ===== L2+L3 Topology Engine ===== */
 let topoServerType='ebox',topoActive=2;
 const topos=[
-  {id:'sl-disconn',label:'Spine-leaf \u00b7 isolated',group:'l2',
+  {id:'sl-disconn',label:'Spine-leaf \u00b7 split',group:'l2',
     descE:'VAST spine-leaf fabric is <strong>not connected</strong> to the customer network. EBoxes dual-home to the customer MLAG pair (data path) and to VAST leaf switches (storage path). Each leaf uplinks to both spines (full mesh).',
     descC:'VAST spine-leaf fabric is <strong>not connected</strong> to the customer network. Each leaf pair serves a CBox + DBox. CBoxes dual-home to the customer MLAG pair and their leaf pair. DBoxes dual-home to their leaf pair only.'},
-  {id:'sl-conn',label:'Spine-leaf \u00b7 connected',group:'l2',
+  {id:'sl-conn',label:'Spine-leaf \u00b7 converged',group:'l2',
     descE:'VAST spine-leaf fabric <strong>uplinks to the customer MLAG pair</strong>. Each spine cross-connects to both customer switches. EBoxes dual-home to their leaf pair.',
     descC:'VAST spine-leaf fabric <strong>uplinks to the customer MLAG pair</strong>. Each spine cross-connects to both customer switches. Each leaf pair serves a CBox + DBox, both dual-homed to their leaf pair.'},
-  {id:'pair-disconn',label:'Pair switches \u00b7 isolated',group:'l2',
+  {id:'pair-disconn',label:'Pair switches \u00b7 split',group:'l2',
     descE:'VAST MLAG switch pair is <strong>not connected</strong> to the customer network. EBox dual-homes to the customer MLAG pair and to the VAST MLAG pair.',
     descC:'VAST MLAG switch pair is <strong>not connected</strong> to the customer network. CBox dual-homes to the customer MLAG pair and the VAST MLAG pair. DBox dual-homes to the VAST MLAG pair only.'},
-  {id:'pair-conn',label:'Pair switches \u00b7 connected',group:'l2',
+  {id:'pair-conn',label:'Pair switches \u00b7 converged',group:'l2',
     descE:'VAST MLAG switch pair <strong>cross-connects to the customer MLAG pair</strong>. EBox dual-homes to the VAST MLAG pair.',
     descC:'VAST MLAG switch pair <strong>cross-connects to the customer MLAG pair</strong>. CBox and DBox both dual-home to the VAST MLAG pair.'},
-  {id:'l3-disconn',label:'EVPN-BGP \u00b7 isolated',group:'l3',
+  {id:'l3-disconn',label:'EVPN-BGP \u00b7 split',group:'l3',
     descE:'L3 EVPN-BGP VXLAN fabric is <strong>not connected</strong> to the customer network. EBoxes dual-home to the customer MLAG pair (data path) and to VAST leaf switches (storage path). Each leaf uplinks to all 3 spines (full mesh). BGP underlay with VXLAN overlay.',
     descC:'L3 EVPN-BGP VXLAN fabric is <strong>not connected</strong> to the customer network. Each leaf pair serves a CBox + DBox. CBoxes dual-home to the customer MLAG pair and their leaf pair. DBoxes dual-home to their leaf pair only. BGP underlay with VXLAN overlay.'},
-  {id:'l3-conn',label:'EVPN-BGP \u00b7 connected',group:'l3',
+  {id:'l3-conn',label:'EVPN-BGP \u00b7 converged',group:'l3',
     descE:'L3 EVPN-BGP VXLAN fabric <strong>uplinks to the customer network</strong> via BGP peering. Each spine peers with both customer switches. EBoxes dual-home to their leaf pair. BGP underlay with VXLAN overlay.',
     descC:'L3 EVPN-BGP VXLAN fabric <strong>uplinks to the customer network</strong> via BGP peering. Each spine peers with both customer switches. Each leaf pair serves a CBox + DBox, both dual-homed to their leaf pair. BGP underlay with VXLAN overlay.'}
 ];
@@ -3487,7 +3569,7 @@ const csF='#4b5563',csLt='#f3f4f6';
 const vzC='#00d4ff';
 const ff='-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif';
 
-function drawSvr(g,cx,cy,fill,light,label,role){const p=el('g',{},g);if(role)p.setAttribute('data-role',role);p._cx=cx;p._cy=cy;el('rect',{x:cx-46,y:cy-24,width:92,height:48,rx:7,fill:light,stroke:fill,'stroke-width':1.2},p);[-6,6].forEach(dy=>{el('rect',{x:cx-26,y:cy+dy-3,width:26,height:6,rx:2,fill:fill,opacity:.3},p);el('circle',{cx:cx+12,cy:cy+dy,r:3,fill:fill,opacity:.35},p)});el('text',{x:cx,y:cy+36,'text-anchor':'middle','font-size':'11px',fill:txtPri,'font-weight':500,'font-family':ff},p).textContent=label}
+function drawSvr(g,cx,cy,fill,light,label,role,sub){const p=el('g',{},g);if(role)p.setAttribute('data-role',role);p._cx=cx;p._cy=cy;el('rect',{x:cx-46,y:cy-24,width:92,height:48,rx:7,fill:light,stroke:fill,'stroke-width':1.2},p);[-6,6].forEach(dy=>{el('rect',{x:cx-26,y:cy+dy-3,width:26,height:6,rx:2,fill:fill,opacity:.3},p);el('circle',{cx:cx+12,cy:cy+dy,r:3,fill:fill,opacity:.35},p)});el('text',{x:cx,y:cy+36,'text-anchor':'middle','font-size':'11px',fill:txtPri,'font-weight':500,'font-family':ff},p).textContent=label;if(sub){el('text',{x:cx,y:cy+49,'text-anchor':'middle','font-size':'9px',fill:txtSec,'font-weight':400,'font-family':ff},p).textContent=sub}}
 function drawSw(g,cx,cy,color,light,label,w,role){w=w||120;const p=el('g',{},g);if(role)p.setAttribute('data-role',role);p._cx=cx;p._cy=cy;el('rect',{x:cx-w/2,y:cy-16,width:w,height:32,rx:6,fill:light,stroke:color,'stroke-width':1.2},p);for(let i=0;i<4;i++)el('rect',{x:cx-w/2+10+i*10,y:cy-6,width:6,height:4,rx:1,fill:color,opacity:.5},p);el('text',{x:cx,y:cy+24,'text-anchor':'middle','font-size':'11px',fill:txtSec,'font-weight':400,'font-family':ff},p).textContent=label}
 function ln(g,x1,y1,x2,y2,c,link){const e=el('line',{x1,y1,x2,y2,stroke:c||txtSec,'stroke-width':1.2,fill:'none'},g);if(link)e.setAttribute('data-link',link);return e}
 function isl(g,x1,y1,x2,y2,c,link){const e=el('line',{x1,y1,x2,y2,stroke:c||txtSec,'stroke-width':1.5,'stroke-dasharray':'3 2',opacity:.5},g);if(link)e.setAttribute('data-link',link);return e}
@@ -3520,7 +3602,7 @@ function drawSLDisconn(cont){
   if(topoServerType==='ebox'){fan(wires,EB1,svY-24,CSA,CSB,csY+16,borderC,'eb1:cust');fan(wires,EB2,svY-24,CSA,CSB,csY+16,borderC,'eb2:cust');fan(wires,EB1,svY+24,L1,L2,lfY-16,vastSw,'eb1:lf1','eb1:lf2');fan(wires,EB2,svY+24,L3,L4,lfY-16,vastSw,'eb2:lf3','eb2:lf4')}
   else{ln(wires,L1,svY-24,CSA,csY+16,borderC,'cb1:cust');ln(wires,L1,svY-24,CSB,csY+16,borderC,'cb1:cust');ln(wires,L3,svY-24,CSA,csY+16,borderC,'cb2:cust');ln(wires,L3,svY-24,CSB,csY+16,borderC,'cb2:cust');xconn(wires,L1,L2,svY,'bot',L1,L2,lfY,'top',vastSw,'cb1:lf1','db1:lf2','cb1:lf2','db1:lf1');xconn(wires,L3,L4,svY,'bot',L3,L4,lfY,'top',vastSw,'cb2:lf3','db2:lf4','cb2:lf4','db2:lf3')}
   const devs=el('g',{},s);drawCustDevs(devs,csY);
-  if(topoServerType==='ebox'){drawSvr(devs,EB1,svY,eF,eLt,'VAST EBox','eb1');drawSvr(devs,EB2,svY,eF,eLt,'VAST EBox','eb2')}
+  if(topoServerType==='ebox'){drawSvr(devs,EB1,svY,eF,eLt,'VAST EBox','eb1','Min 8\u201312 nodes');drawSvr(devs,EB2,svY,eF,eLt,'VAST EBox','eb2','Min 8\u201312 nodes')}
   else{drawSvr(devs,L1,svY,cF,cLt,'CBox','cb1');drawSvr(devs,L2,svY,dF,dLt,'DBox','db1');drawSvr(devs,L3,svY,cF,cLt,'CBox','cb2');drawSvr(devs,L4,svY,dF,dLt,'DBox','db2')}
   [L1,L2,L3,L4].forEach((x,i)=>drawSw(devs,x,lfY,vastSw,vastSwLt,'Leaf '+(i+1),100,'lf'+(i+1)));
   drawSw(devs,SP1,spY,vastSw,vastSwLt,'Spine 1',110,'sp1');drawSw(devs,SP2,spY,vastSw,vastSwLt,'Spine 2',110,'sp2');
@@ -3532,14 +3614,14 @@ function drawSLConn(cont){
   const csY=165,spY=290,lfY=400,svY=515;
   zoneLabel(s,22,20,220,'Customer');zoneLabel(s,22,230,580,'VAST Data');vz(s,55,235,W-110,350);
   const wires=el('g',{},s);drawCustWires(wires,csY);
-  xconn(wires,SP1,SP2,spY,'top',CSA,CSB,csY,'bot',borderC,'sp1:cust','sp2:cust');isl(wires,SP1+56,spY,SP2-56,spY,vastSw,'sp1:sp2');
+  xconn(wires,SP1,SP2,spY,'top',CSA,CSB,csY,'bot',borderC,'sp1:cust','sp2:cust','sp1:cust','sp2:cust');isl(wires,SP1+56,spY,SP2-56,spY,vastSw,'sp1:sp2');
   fullMesh(wires,[L1,L2,L3,L4],lfY,[SP1,SP2],spY,vastSw,'up',lRoles4,sRoles2);
   if(topoServerType==='ebox'){fan(wires,EB1,svY-24,L1,L2,lfY+16,vastSw,'eb1:lf1','eb1:lf2');fan(wires,EB2,svY-24,L3,L4,lfY+16,vastSw,'eb2:lf3','eb2:lf4')}
   else{xconn(wires,L1,L2,svY,'top',L1,L2,lfY,'bot',vastSw,'cb1:lf1','db1:lf2','cb1:lf2','db1:lf1');xconn(wires,L3,L4,svY,'top',L3,L4,lfY,'bot',vastSw,'cb2:lf3','db2:lf4','cb2:lf4','db2:lf3')}
   const devs=el('g',{},s);drawCustDevs(devs,csY);
   drawSw(devs,SP1,spY,vastSw,vastSwLt,'Spine 1',110,'sp1');drawSw(devs,SP2,spY,vastSw,vastSwLt,'Spine 2',110,'sp2');
   [L1,L2,L3,L4].forEach((x,i)=>drawSw(devs,x,lfY,vastSw,vastSwLt,'Leaf '+(i+1),100,'lf'+(i+1)));
-  if(topoServerType==='ebox'){drawSvr(devs,EB1,svY,eF,eLt,'VAST EBox','eb1');drawSvr(devs,EB2,svY,eF,eLt,'VAST EBox','eb2')}
+  if(topoServerType==='ebox'){drawSvr(devs,EB1,svY,eF,eLt,'VAST EBox','eb1','Min 8\u201312 nodes');drawSvr(devs,EB2,svY,eF,eLt,'VAST EBox','eb2','Min 8\u201312 nodes')}
   else{drawSvr(devs,L1,svY,cF,cLt,'CBox','cb1');drawSvr(devs,L2,svY,dF,dLt,'DBox','db1');drawSvr(devs,L3,svY,cF,cLt,'CBox','cb2');drawSvr(devs,L4,svY,dF,dLt,'DBox','db2')}
   cont.appendChild(s)
 }
@@ -3552,7 +3634,7 @@ function drawPairDisconn(cont){
   if(topoServerType==='ebox'){fan(wires,CX,svY-24,CSA,CSB,csY+16,borderC,'eb1:cust');fan(wires,CX,svY+24,CSA,CSB,swY-16,vastSw,'eb1:sw1','eb1:sw2')}
   else{ln(wires,CSA,svY-24,CSA,csY+16,borderC,'cb1:cust');ln(wires,CSA,svY-24,CSB,csY+16,borderC,'cb1:cust');xconn(wires,CSA,CSB,svY,'bot',CSA,CSB,swY,'top',vastSw,'cb1:sw1','db1:sw2','cb1:sw2','db1:sw1')}
   const devs=el('g',{},s);drawCustDevs(devs,csY);
-  if(topoServerType==='ebox'){drawSvr(devs,CX,svY,eF,eLt,'VAST EBox','eb1')}
+  if(topoServerType==='ebox'){drawSvr(devs,CX,svY,eF,eLt,'VAST EBox','eb1','Min 8\u201312 nodes')}
   else{drawSvr(devs,CSA,svY,cF,cLt,'CBox','cb1');drawSvr(devs,CSB,svY,dF,dLt,'DBox','db1')}
   drawSw(devs,CSA,swY,vastSw,vastSwLt,'Switch 1',120,'sw1');drawSw(devs,CSB,swY,vastSw,vastSwLt,'Switch 2',120,'sw2');
   cont.appendChild(s)
@@ -3562,12 +3644,12 @@ function drawPairConn(cont){
   const H=510,s=svg(W,H);addDefs(s);
   const csY=165,swY=310,svY=430;
   zoneLabel(s,22,20,220,'Customer');zoneLabel(s,22,230,490,'VAST Data');vz(s,55,235,W-110,260);
-  const wires=el('g',{},s);drawCustWires(wires,csY);xconn(wires,CSA,CSB,swY,'top',CSA,CSB,csY,'bot',borderC,'sw1:cust','sw2:cust');isl(wires,CSA+60,swY,CSB-60,swY,vastSw,'sw1:sw2');
+  const wires=el('g',{},s);drawCustWires(wires,csY);xconn(wires,CSA,CSB,swY,'top',CSA,CSB,csY,'bot',borderC,'sw1:cust','sw2:cust','sw1:cust','sw2:cust');isl(wires,CSA+60,swY,CSB-60,swY,vastSw,'sw1:sw2');
   if(topoServerType==='ebox'){fan(wires,CX,svY-24,CSA,CSB,swY+16,vastSw,'eb1:sw1','eb1:sw2')}
   else{xconn(wires,CSA,CSB,svY,'top',CSA,CSB,swY,'bot',vastSw,'cb1:sw1','db1:sw2','cb1:sw2','db1:sw1')}
   const devs=el('g',{},s);drawCustDevs(devs,csY);
   drawSw(devs,CSA,swY,vastSw,vastSwLt,'Switch 1',120,'sw1');drawSw(devs,CSB,swY,vastSw,vastSwLt,'Switch 2',120,'sw2');
-  if(topoServerType==='ebox'){drawSvr(devs,CX,svY,eF,eLt,'VAST EBox','eb1')}
+  if(topoServerType==='ebox'){drawSvr(devs,CX,svY,eF,eLt,'VAST EBox','eb1','Min 8\u201312 nodes')}
   else{drawSvr(devs,CSA,svY,cF,cLt,'CBox','cb1');drawSvr(devs,CSB,svY,dF,dLt,'DBox','db1')}
   cont.appendChild(s)
 }
@@ -3581,7 +3663,7 @@ function drawL3Disconn(cont){
   if(topoServerType==='ebox'){fan(wires,EB1,svY-24,CSA,CSB,csY+16,borderC,'eb1:cust');fan(wires,EB2,svY-24,CSA,CSB,csY+16,borderC,'eb2:cust');fan(wires,EB1,svY+24,L1,L2,lfY-16,vastSw,'eb1:lf1','eb1:lf2');fan(wires,EB2,svY+24,L3,L4,lfY-16,vastSw,'eb2:lf3','eb2:lf4')}
   else{ln(wires,L1,svY-24,CSA,csY+16,borderC,'cb1:cust');ln(wires,L1,svY-24,CSB,csY+16,borderC,'cb1:cust');ln(wires,L3,svY-24,CSA,csY+16,borderC,'cb2:cust');ln(wires,L3,svY-24,CSB,csY+16,borderC,'cb2:cust');xconn(wires,L1,L2,svY,'bot',L1,L2,lfY,'top',vastSw,'cb1:lf1','db1:lf2','cb1:lf2','db1:lf1');xconn(wires,L3,L4,svY,'bot',L3,L4,lfY,'top',vastSw,'cb2:lf3','db2:lf4','cb2:lf4','db2:lf3')}
   const devs=el('g',{},s);drawCustDevs(devs,csY);
-  if(topoServerType==='ebox'){drawSvr(devs,EB1,svY,eF,eLt,'VAST EBox','eb1');drawSvr(devs,EB2,svY,eF,eLt,'VAST EBox','eb2')}
+  if(topoServerType==='ebox'){drawSvr(devs,EB1,svY,eF,eLt,'VAST EBox','eb1','Min 8\u201312 nodes');drawSvr(devs,EB2,svY,eF,eLt,'VAST EBox','eb2','Min 8\u201312 nodes')}
   else{drawSvr(devs,L1,svY,cF,cLt,'CBox','cb1');drawSvr(devs,L2,svY,dF,dLt,'DBox','db1');drawSvr(devs,L3,svY,cF,cLt,'CBox','cb2');drawSvr(devs,L4,svY,dF,dLt,'DBox','db2')}
   [L1,L2,L3,L4].forEach((x,i)=>drawSw(devs,x,lfY,vastSw,vastSwLt,'Leaf '+(i+1),100,'lf'+(i+1)));
   drawSw(devs,S3_1,spY,vastSw,vastSwLt,'Spine 1',100,'sp1');drawSw(devs,S3_2,spY,vastSw,vastSwLt,'Spine 2',100,'sp2');drawSw(devs,S3_3,spY,vastSw,vastSwLt,'Spine 3',100,'sp3');
@@ -3600,7 +3682,7 @@ function drawL3Conn(cont){
   const devs=el('g',{},s);drawCustDevs(devs,csY);
   drawSw(devs,S3_1,spY,vastSw,vastSwLt,'Spine 1',100,'sp1');drawSw(devs,S3_2,spY,vastSw,vastSwLt,'Spine 2',100,'sp2');drawSw(devs,S3_3,spY,vastSw,vastSwLt,'Spine 3',100,'sp3');
   [L1,L2,L3,L4].forEach((x,i)=>drawSw(devs,x,lfY,vastSw,vastSwLt,'Leaf '+(i+1),100,'lf'+(i+1)));
-  if(topoServerType==='ebox'){drawSvr(devs,EB1,svY,eF,eLt,'VAST EBox','eb1');drawSvr(devs,EB2,svY,eF,eLt,'VAST EBox','eb2')}
+  if(topoServerType==='ebox'){drawSvr(devs,EB1,svY,eF,eLt,'VAST EBox','eb1','Min 8\u201312 nodes');drawSvr(devs,EB2,svY,eF,eLt,'VAST EBox','eb2','Min 8\u201312 nodes')}
   else{drawSvr(devs,L1,svY,cF,cLt,'CBox','cb1');drawSvr(devs,L2,svY,dF,dLt,'DBox','db1');drawSvr(devs,L3,svY,cF,cLt,'CBox','cb2');drawSvr(devs,L4,svY,dF,dLt,'DBox','db2')}
   cont.appendChild(s)
 }
@@ -3670,37 +3752,37 @@ const failScenarios={
 /* Per-topology detail content */
 const topoDetailData={
   'sl-disconn':{
-    title:'Spine-Leaf Isolated',
+    title:'Spine-Leaf Split',
     overview:'<p>Two-tier Clos fabric with <strong>2 spines</strong> and <strong>4 leaves</strong>. The VAST fabric is air-gapped from the customer network — servers bridge the two domains by dual-homing to both.</p>',
     traffic:'<p>Client traffic enters via the customer MLAG pair, hits the server data-plane NIC, and is processed locally. Storage traffic flows through the server backend NIC into the VAST leaf-spine fabric where RDMA connects all nodes.</p>',
     redundancy:'<p>Every component is dual-homed or redundant:</p><ul><li>Servers dual-home to customer switches (data) and VAST leaves (storage)</li><li>Full mesh between all 4 leaves and both spines provides ECMP</li><li>Spine ISL provides an additional cross-path</li><li>No single point of failure in the VAST fabric</li></ul>'
   },
   'sl-conn':{
-    title:'Spine-Leaf Connected',
+    title:'Spine-Leaf Converged',
     overview:'<p>Two-tier Clos fabric with <strong>2 spines</strong> and <strong>4 leaves</strong>. Spines cross-connect to the customer MLAG pair, providing a single entry point into the VAST fabric.</p>',
     traffic:'<p>Client traffic enters through the customer switches, traverses the spine cross-connects into the VAST fabric, then down through leaves to the servers. Storage traffic stays within the VAST leaf-spine fabric.</p>',
     redundancy:'<p>Dual spines each cross-connect to both customer switches, providing 4 independent paths into the fabric. Full leaf-spine mesh ensures no single link failure isolates any server.</p>'
   },
   'pair-disconn':{
-    title:'Pair Switches Isolated',
+    title:'Pair Switches Split',
     overview:'<p>Simple <strong>MLAG switch pair</strong> without a spine layer. The VAST fabric is not connected to the customer network. Servers dual-home to both domains.</p>',
     traffic:'<p>Client traffic goes through the customer MLAG pair to the server data-plane NIC. Storage traffic flows through the server backend NIC to the VAST MLAG switch pair for inter-node RDMA.</p>',
     redundancy:'<p>The MLAG pair provides active-active forwarding with ISL failover. Servers dual-home to both switches. Simpler than spine-leaf but limited to the bandwidth of 2 switches.</p>'
   },
   'pair-conn':{
-    title:'Pair Switches Connected',
+    title:'Pair Switches Converged',
     overview:'<p><strong>MLAG switch pair</strong> that cross-connects to the customer MLAG pair. Single-tier fabric provides simple, low-latency connectivity.</p>',
     traffic:'<p>Client traffic enters through customer switches, crosses to the VAST MLAG pair, then down to servers. The cross-connect provides 4 independent paths between the two switch pairs.</p>',
     redundancy:'<p>Cross-connect between MLAG pairs means either switch in either pair can fail without losing connectivity. ISL on both pairs provides backup paths.</p>'
   },
   'l3-disconn':{
-    title:'EVPN-BGP VXLAN Isolated',
+    title:'EVPN-BGP VXLAN Split',
     overview:'<p>Layer 3 fabric using <strong>3 spines</strong> with eBGP unnumbered underlay and EVPN/VXLAN overlay. The fabric is air-gapped from the customer network.</p>',
     traffic:'<p>Storage traffic is encapsulated in VXLAN between leaf switches. The BGP underlay provides IP reachability while EVPN advertises MAC/IP bindings. Symmetric IRB handles inter-VLAN routing at the leaf layer.</p>',
     redundancy:'<p>3 spines provide 50% more redundancy than 2-spine L2 topologies. BGP ECMP across all spines, fast failover via BFD, and VXLAN overlay automatically re-tunnels around failures. No spanning tree — pure L3 forwarding.</p>'
   },
   'l3-conn':{
-    title:'EVPN-BGP VXLAN Connected',
+    title:'EVPN-BGP VXLAN Converged',
     overview:'<p>Layer 3 EVPN-BGP fabric with <strong>3 spines</strong> that peer via BGP with the customer network. Provides scalable L3 connectivity with VXLAN overlay.</p>',
     traffic:'<p>Client traffic enters via BGP peering between customer switches and VAST spines. VXLAN overlay extends L2 segments over the L3 fabric. EVPN handles MAC learning and ARP suppression.</p>',
     redundancy:'<p>Each of the 3 spines independently peers with both customer switches — 6 BGP sessions total. Loss of any spine still leaves 4 peering sessions active. BGP reconvergence is sub-second with BFD.</p>'
@@ -3821,7 +3903,7 @@ function updateNdDesc(){
   const descs={
     'conv-dual':{title:'Converged — Dual NIC',color:'#2563eb',body:`<p>Both the <strong style="color:#22c55e">Frontend NIC</strong> and <strong style="color:#f97316">Backend NIC</strong> uplink to the <strong>same VAST leaf pair</strong>. Client VIPs and cluster mesh traffic share the same switching domain.</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px"><div><p style="font-size:11px;font-weight:600;color:var(--text3);margin-bottom:4px">BENEFITS</p><ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.7"><li>Fewer switches &#8212; one leaf pair</li><li>Simpler cabling</li><li>Lower cost</li></ul></div><div><p style="font-size:11px;font-weight:600;color:var(--text3);margin-bottom:4px">CONSIDERATIONS</p><ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.7"><li>Shared bandwidth between traffic types</li><li>Switch failure affects both domains</li></ul></div></div>`},
     'conv-single':{title:'Converged — Single NIC',color:'#7c3aed',body:`<p>Only the <strong style="color:#f97316">Backend NIC</strong> is present &#8212; it handles <strong>both client VIP traffic and cluster mesh</strong> via SR-IOV virtual functions. Everything connects to the same VAST leaf pair.</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px"><div><p style="font-size:11px;font-weight:600;color:var(--text3);margin-bottom:4px">BENEFITS</p><ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.7"><li>No frontend NIC required</li><li>Minimum hardware footprint</li><li>Same single switching domain</li></ul></div><div><p style="font-size:11px;font-weight:600;color:var(--text3);margin-bottom:4px">HOW IT WORKS</p><ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.7"><li>VIPs via SR-IOV VFs on backend NIC</li><li>Cluster mesh on PF VLAN 69 sub-interfaces</li></ul></div></div>`},
-    'split':{title:'Split Networking',color:'#f97316',body:`<p>Two <strong>independent switching domains</strong>: the <strong style="color:#2563eb">Frontend NIC</strong> connects to customer switches for VIP traffic, while the <strong style="color:#f97316">Backend NIC</strong> connects to a dedicated VAST leaf pair for cluster mesh.</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px"><div><p style="font-size:11px;font-weight:600;color:var(--text3);margin-bottom:4px">BENEFITS</p><ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.7"><li>Traffic isolation</li><li>Independent failure domains</li><li>Dedicated bandwidth per type</li></ul></div><div><p style="font-size:11px;font-weight:600;color:var(--text3);margin-bottom:4px">CONSIDERATIONS</p><ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.7"><li>More switches needed</li><li>More complex cabling</li><li>Higher cost</li></ul></div></div><p style="margin-top:10px;padding:7px 10px;border-radius:6px;background:#FFF7ED;border-left:3px solid #f97316;font-size:12px"><strong>Topology mapping:</strong> Split = "Isolated" mode &bull; Converged = "Connected" mode in the L2/L3 page.</p>`}
+    'split':{title:'Split Networking',color:'#f97316',body:`<p>Two <strong>independent switching domains</strong>: the <strong style="color:#2563eb">Frontend NIC</strong> connects to customer switches for VIP traffic, while the <strong style="color:#f97316">Backend NIC</strong> connects to a dedicated VAST leaf pair for cluster mesh.</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px"><div><p style="font-size:11px;font-weight:600;color:var(--text3);margin-bottom:4px">BENEFITS</p><ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.7"><li>Traffic isolation</li><li>Independent failure domains</li><li>Dedicated bandwidth per type</li></ul></div><div><p style="font-size:11px;font-weight:600;color:var(--text3);margin-bottom:4px">CONSIDERATIONS</p><ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.7"><li>More switches needed</li><li>More complex cabling</li><li>Higher cost</li></ul></div></div><p style="margin-top:10px;padding:7px 10px;border-radius:6px;background:#FFF7ED;border-left:3px solid #f97316;font-size:12px"><strong>Topology mapping:</strong> Split and Converged modes correspond to the topology options in the L2/L3 page.</p>`}
   };
   const info=descs[ndActive];
   d.innerHTML=`<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><div style="width:10px;height:10px;border-radius:50%;background:${info.color}"></div><h3 style="margin:0;font-size:14px;color:${info.color}">${info.title}</h3></div>${info.body}`;
@@ -3972,22 +4054,22 @@ function svgConvergedSingle(){
   </svg>`;
 }
 function svgSplit(){
-  return `<svg viewBox="0 0 760 494" width="100%" style="display:block;font-family:inherit">
+  return `<svg viewBox="0 0 760 530" width="100%" style="display:block;font-family:inherit">
   <defs>
     <marker id="sp-blue" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#2563eb"/></marker>
     <marker id="sp-orange" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#f97316"/></marker>
   </defs>
-  <!-- Customer Domain box — centered, sized to content -->
+  <!-- Customer Domain box -->
   <rect x="80" y="10" width="600" height="206" rx="10" fill="#EFF6FF" stroke="#2563eb" stroke-width="1.5" opacity="0.8"/>
   <text x="380" y="32" text-anchor="middle" font-size="12" font-weight="600" fill="#1d4ed8">Customer Domain  —  VIP traffic</text>
-  <!-- VAST Backend Domain box — centered, sized to content -->
-  <rect x="80" y="336" width="600" height="140" rx="10" fill="#FFF7ED" stroke="#f97316" stroke-width="1.5" opacity="0.8"/>
-  <text x="380" y="358" text-anchor="middle" font-size="12" font-weight="600" fill="#ea580c">VAST Backend Domain  —  Cluster Mesh</text>
-  <!-- Client Servers — centered at x=380 -->
+  <!-- VAST Backend Domain box -->
+  <rect x="80" y="372" width="600" height="140" rx="10" fill="#FFF7ED" stroke="#f97316" stroke-width="1.5" opacity="0.8"/>
+  <text x="380" y="394" text-anchor="middle" font-size="12" font-weight="600" fill="#ea580c">VAST Backend Domain  —  Cluster Mesh</text>
+  <!-- Client Servers -->
   <rect x="305" y="46" width="150" height="58" rx="8" fill="white" stroke="#2563eb" stroke-width="1.5"/>
   <text x="380" y="70" text-anchor="middle" font-size="12" font-weight="600" fill="#1d4ed8">Client Servers</text>
   <text x="380" y="88" text-anchor="middle" font-size="11" fill="var(--text3)">NFS / SMB / S3</text>
-  <!-- Customer switches — centers at x=260 and x=500 -->
+  <!-- Customer switches -->
   <rect x="170" y="130" width="180" height="58" rx="8" fill="white" stroke="#2563eb" stroke-width="2"/>
   <text x="260" y="156" text-anchor="middle" font-size="12" font-weight="700" fill="#2563eb">Customer SW-1</text>
   <text x="260" y="174" text-anchor="middle" font-size="11" fill="var(--text3)">MLAG Active</text>
@@ -3997,35 +4079,35 @@ function svgSplit(){
   <line x1="350" y1="159" x2="410" y2="159" stroke="#2563eb" stroke-width="2" stroke-dasharray="5,3"/>
   <text x="380" y="153" text-anchor="middle" font-size="10" fill="#2563eb">ISL</text>
   <!-- VAST Server — centered between domains -->
-  <rect x="160" y="228" width="440" height="92" rx="8" fill="var(--bg2)" stroke="var(--border)" stroke-width="1.5"/>
-  <text x="380" y="250" text-anchor="middle" font-size="12" font-weight="600" fill="var(--text)">VAST Server (CBox / EBox)</text>
-  <rect x="175" y="258" width="170" height="42" rx="6" fill="#EFF6FF" stroke="#2563eb" stroke-width="1.5"/>
-  <text x="260" y="284" text-anchor="middle" font-size="12" font-weight="600" fill="#2563eb">Frontend NIC</text>
-  <rect x="415" y="258" width="170" height="42" rx="6" fill="#FFF7ED" stroke="#f97316" stroke-width="1.5"/>
-  <text x="500" y="284" text-anchor="middle" font-size="12" font-weight="600" fill="#f97316">Backend NIC</text>
-  <!-- VAST Leaf pair — centers at x=260 and x=500 -->
-  <rect x="170" y="370" width="180" height="58" rx="8" fill="white" stroke="#f97316" stroke-width="2"/>
-  <text x="260" y="396" text-anchor="middle" font-size="12" font-weight="700" fill="#f97316">VAST Leaf-1</text>
-  <text x="260" y="414" text-anchor="middle" font-size="11" fill="var(--text3)">MLAG Active</text>
-  <rect x="410" y="370" width="180" height="58" rx="8" fill="white" stroke="#f97316" stroke-width="2"/>
-  <text x="500" y="396" text-anchor="middle" font-size="12" font-weight="700" fill="#f97316">VAST Leaf-2</text>
-  <text x="500" y="414" text-anchor="middle" font-size="11" fill="var(--text3)">MLAG Active</text>
-  <line x1="350" y1="399" x2="410" y2="399" stroke="#f97316" stroke-width="2" stroke-dasharray="5,3"/>
-  <text x="380" y="393" text-anchor="middle" font-size="10" fill="#f97316">ISL</text>
-  <!-- Clients → Customer switches (symmetric diagonals) -->
+  <rect x="160" y="260" width="440" height="92" rx="8" fill="var(--bg2)" stroke="var(--border)" stroke-width="1.5"/>
+  <text x="380" y="282" text-anchor="middle" font-size="12" font-weight="600" fill="var(--text)">VAST Server (CBox / EBox)</text>
+  <rect x="175" y="290" width="170" height="42" rx="6" fill="#EFF6FF" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="260" y="316" text-anchor="middle" font-size="12" font-weight="600" fill="#2563eb">Frontend NIC</text>
+  <rect x="415" y="290" width="170" height="42" rx="6" fill="#FFF7ED" stroke="#f97316" stroke-width="1.5"/>
+  <text x="500" y="316" text-anchor="middle" font-size="12" font-weight="600" fill="#f97316">Backend NIC</text>
+  <!-- VAST Leaf pair -->
+  <rect x="170" y="406" width="180" height="58" rx="8" fill="white" stroke="#f97316" stroke-width="2"/>
+  <text x="260" y="432" text-anchor="middle" font-size="12" font-weight="700" fill="#f97316">VAST Leaf-1</text>
+  <text x="260" y="450" text-anchor="middle" font-size="11" fill="var(--text3)">MLAG Active</text>
+  <rect x="410" y="406" width="180" height="58" rx="8" fill="white" stroke="#f97316" stroke-width="2"/>
+  <text x="500" y="432" text-anchor="middle" font-size="12" font-weight="700" fill="#f97316">VAST Leaf-2</text>
+  <text x="500" y="450" text-anchor="middle" font-size="11" fill="var(--text3)">MLAG Active</text>
+  <line x1="350" y1="435" x2="410" y2="435" stroke="#f97316" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="380" y="429" text-anchor="middle" font-size="10" fill="#f97316">ISL</text>
+  <!-- Clients → Customer switches -->
   <line x1="355" y1="104" x2="293" y2="130" stroke="#2563eb" stroke-width="2" marker-end="url(#sp-blue)"/>
   <line x1="405" y1="104" x2="467" y2="130" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#sp-blue)"/>
   <text x="380" y="121" text-anchor="middle" font-size="11" fill="#2563eb">Client VIPs</text>
-  <!-- Frontend NIC → Customer switches — vertical primary, then cross dashed -->
-  <line x1="260" y1="258" x2="260" y2="188" stroke="#2563eb" stroke-width="2" marker-end="url(#sp-blue)"/>
-  <line x1="300" y1="258" x2="490" y2="188" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#sp-blue)"/>
-  <text x="196" y="218" text-anchor="middle" font-size="11" fill="#2563eb">VIP traffic</text>
-  <!-- Backend NIC → VAST Leaf pair — vertical primary, then cross dashed -->
-  <line x1="500" y1="300" x2="500" y2="370" stroke="#f97316" stroke-width="2" marker-end="url(#sp-orange)"/>
-  <line x1="458" y1="300" x2="278" y2="370" stroke="#f97316" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#sp-orange)"/>
-  <text x="564" y="330" text-anchor="middle" font-size="11" fill="#f97316">Cluster mesh</text>
+  <!-- Frontend NIC → Customer switches -->
+  <line x1="260" y1="290" x2="260" y2="188" stroke="#2563eb" stroke-width="2" marker-end="url(#sp-blue)"/>
+  <line x1="300" y1="290" x2="490" y2="188" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#sp-blue)"/>
+  <text x="196" y="240" text-anchor="middle" font-size="11" fill="#2563eb">VIP traffic</text>
+  <!-- Backend NIC → VAST Leaf pair -->
+  <line x1="500" y1="332" x2="500" y2="406" stroke="#f97316" stroke-width="2" marker-end="url(#sp-orange)"/>
+  <line x1="458" y1="332" x2="278" y2="406" stroke="#f97316" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#sp-orange)"/>
+  <text x="564" y="366" text-anchor="middle" font-size="11" fill="#f97316">Cluster mesh</text>
   <!-- Footer -->
-  <text x="380" y="483" text-anchor="middle" font-size="11" fill="var(--text3)">Separate switching domains &#8212; independent failure, dedicated bandwidth per traffic type</text>
+  <text x="380" y="522" text-anchor="middle" font-size="11" fill="var(--text3)">Separate switching domains &#8212; independent failure, dedicated bandwidth per traffic type</text>
   </svg>`;
 }
 /* ===== Slide Mode ===== */
@@ -4138,7 +4220,7 @@ const slideData=[
     drawFns[topoActive](tmp);
     const descEl=document.getElementById('topo-desc');
     const legEl=document.getElementById('topo-legend');
-    const sizeNames=['Spine-Leaf Isolated','Spine-Leaf Connected','Pair Isolated','Pair Connected','L3 EVPN-BGP Isolated','L3 EVPN-BGP Connected'];
+    const sizeNames=['Spine-Leaf Split','Spine-Leaf Converged','Pair Split','Pair Converged','L3 EVPN-BGP Split','L3 EVPN-BGP Converged'];
     return `<h2>Topology: ${sizeNames[topoActive]||''}</h2>`
       +(descEl?'<div style="margin-bottom:12px">'+descEl.innerHTML+'</div>':'')
       +tmp.innerHTML
