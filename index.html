@@ -40,9 +40,23 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
 .nav-link.active{background:var(--accent-bg);color:var(--accent);border-color:var(--accent-border)}
 .nav-icon{font-size:14px;width:20px;text-align:center;flex-shrink:0}
 
+/* ========== BRAND WATERMARK ========== */
+.brand-watermark{
+  position:fixed;top:0;right:0;width:var(--detail-w);
+  background:var(--bg2);border-left:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:12px 16px 10px;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+}
+.brand-watermark .vast-logo{
+  flex-shrink:0;display:flex;align-items:center;
+}
+.brand-watermark .made-by{
+  flex-shrink:0;font-size:10px;color:#8A8985;font-style:italic;text-align:right;line-height:1.3;
+}
+
 /* ========== RIGHT DETAIL PANEL ========== */
 .detail-panel{
-  position:fixed;top:0;right:0;bottom:0;width:var(--detail-w);
+  position:fixed;top:52px;right:0;bottom:0;width:var(--detail-w);
   background:var(--bg2);border-left:1px solid var(--border);
   overflow-y:auto;padding:20px;z-index:90;
 }
@@ -148,6 +162,23 @@ svg text.t{font-family:var(--font);font-size:14px;fill:var(--text)}
 
 /* ========== TOPOLOGY SECTION ========== */
 .section-label{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;margin-top:4px}
+.topo-size-card{
+  display:flex;align-items:center;gap:12px;padding:14px 16px;
+  border-radius:10px;border:1.5px solid var(--border);background:var(--bg2);
+  cursor:pointer;transition:all .2s;user-select:none;
+}
+.topo-size-card:hover{border-color:var(--text3);background:var(--bg3)}
+.topo-size-card.active{border-color:var(--accent);background:var(--accent-bg);box-shadow:0 0 0 1px var(--accent-border)}
+.topo-size-icon{
+  width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:700;color:var(--text2);background:var(--bg3);border:1px solid var(--border);
+  flex-shrink:0;
+}
+.topo-size-card.active .topo-size-icon{background:var(--accent);color:#fff;border-color:var(--accent)}
+.topo-size-info{min-width:0}
+.topo-size-title{font-size:14px;font-weight:600;color:var(--text)}
+.topo-size-sub{font-size:11px;font-weight:500;color:var(--accent);margin-top:1px}
+.topo-size-detail{font-size:11px;color:var(--text3);margin-top:2px}
 .topo-tabs{display:inline-flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:6px}
 .topo-tab{
   padding:7px 16px;font-size:12px;font-weight:500;cursor:pointer;
@@ -188,7 +219,8 @@ line.link-dead{stroke:#dc2626!important;stroke-dasharray:4 3!important;opacity:.
 
 /* ========== RESPONSIVE ========== */
 @media(max-width:1100px){
-  .detail-panel{display:none}
+  .brand-watermark{display:none}
+  .detail-panel{display:none;top:0}
   .main-wrap{margin-right:0}
 }
 @media(max-width:700px){
@@ -207,9 +239,74 @@ line.link-dead{stroke:#dc2626!important;stroke-dasharray:4 3!important;opacity:.
 .mobile-header button{background:none;border:none;font-size:18px;cursor:pointer;color:var(--text);padding:4px 8px}
 .mobile-header span{font-size:14px;font-weight:600;color:var(--text)}
 @media(max-width:700px){.main-wrap{margin-top:48px}}
+
+/* ========== SLIDE MODE ========== */
+.slide-overlay{
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:#0C2340;
+  flex-direction:column;
+}
+.slide-overlay.active{display:flex}
+.slide-topbar{
+  height:48px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;background:rgba(0,0,0,.25);flex-shrink:0;
+}
+.slide-topbar-left{display:flex;align-items:center;gap:12px}
+.slide-topbar-title{font-size:13px;font-weight:600;color:rgba(255,255,255,.7)}
+.slide-counter{font-size:12px;color:rgba(255,255,255,.45);font-variant-numeric:tabular-nums}
+.slide-close{
+  background:none;border:1px solid rgba(255,255,255,.2);border-radius:6px;
+  color:#fff;font-size:12px;padding:5px 14px;cursor:pointer;font-family:inherit;
+  transition:all .15s;
+}
+.slide-close:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.4)}
+.slide-viewport{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;padding:24px 60px;
+}
+.slide-card{
+  background:#fff;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5);
+  width:100%;max-width:1100px;max-height:100%;overflow-y:auto;overflow-x:hidden;
+  padding:48px 56px;animation:slideIn .35s ease;box-sizing:border-box;
+}
+.slide-card::-webkit-scrollbar{width:4px}
+.slide-card::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px}
+@keyframes slideIn{from{opacity:0;transform:scale(.97) translateY(12px)}to{opacity:1;transform:none}}
+.slide-card svg{max-width:100%;height:auto}
+.slide-card h2{font-size:28px;margin-bottom:6px;color:#1E3A5F}
+.slide-card .page-sub{font-size:13px;color:#5F5E5A;margin-bottom:16px}
+.slide-nav{
+  height:52px;display:flex;align-items:center;justify-content:center;gap:12px;
+  background:rgba(0,0,0,.25);flex-shrink:0;
+}
+.slide-nav button{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  border-radius:8px;color:#fff;font-size:13px;padding:7px 20px;cursor:pointer;
+  font-family:inherit;transition:all .15s;display:flex;align-items:center;gap:6px;
+}
+.slide-nav button:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3)}
+.slide-nav button:disabled{opacity:.3;cursor:default;pointer-events:none}
+.slide-dots{display:flex;gap:5px;align-items:center}
+.slide-dot{
+  width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);
+  transition:all .2s;cursor:pointer;border:none;padding:0;
+}
+.slide-dot.active{background:#0D9488;width:20px;border-radius:4px}
+.slide-progress{
+  position:absolute;bottom:52px;left:0;height:2px;background:#0D9488;
+  transition:width .3s ease;
+}
 </style>
 </head>
 <body>
+
+<!-- BRAND WATERMARK -->
+<div class="brand-watermark">
+  <div class="vast-logo">
+    <img src="vast_logo.png" alt="VAST Data" style="height:32px;width:auto;display:block">
+  </div>
+  <div class="made-by">Made by<br><strong style="color:#2C2C2A;font-style:normal">Wong Tran</strong></div>
+</div>
 
 <!-- MOBILE HEADER -->
 <div class="mobile-header">
@@ -234,12 +331,42 @@ line.link-dead{stroke:#dc2626!important;stroke-dasharray:4 3!important;opacity:.
     <a class="nav-link" onclick="switchPage('dnode',this)">
       <span class="nav-icon">&#x25A4;</span>DNode
     </a>
+    <div style="font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;padding:12px 12px 2px">Network Design</div>
+    <a class="nav-link" onclick="switchPage('netdesign',this)">
+      <span class="nav-icon">&#x25D1;</span>Converged vs Split
+    </a>
     <div style="font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;padding:12px 12px 2px">Topology</div>
     <a class="nav-link" onclick="switchPage('topo',this)">
       <span class="nav-icon">&#x25C9;</span>L2 / L3
     </a>
+    <div style="font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;padding:16px 12px 2px">Presentation</div>
+    <a class="nav-link" onclick="enterSlideMode()" style="background:linear-gradient(135deg,#0D9488,#0C447C);color:#fff;border:none;font-weight:600">
+      <span class="nav-icon">&#x25B6;</span>Slide Mode
+    </a>
   </div>
 </nav>
+
+<!-- SLIDE MODE OVERLAY -->
+<div class="slide-overlay" id="slide-overlay">
+  <div class="slide-topbar">
+    <div class="slide-topbar-left">
+      <span class="slide-topbar-title">VAST Data — Network Training</span>
+      <span class="slide-counter" id="slide-counter">1 / 5</span>
+    </div>
+    <button class="slide-close" onclick="exitSlideMode()">ESC &nbsp;Exit</button>
+  </div>
+  <div class="slide-viewport">
+    <div class="slide-card" id="slide-card"></div>
+  </div>
+  <div style="position:relative">
+    <div class="slide-progress" id="slide-progress"></div>
+  </div>
+  <div class="slide-nav">
+    <button id="slide-prev" onclick="slideNav(-1)">&#8592; Prev</button>
+    <div class="slide-dots" id="slide-dots"></div>
+    <button id="slide-next" onclick="slideNav(1)">Next &#8594;</button>
+  </div>
+</div>
 
 <!-- RIGHT DETAIL PANEL -->
 <aside class="detail-panel" id="detail-panel"></aside>
@@ -330,6 +457,7 @@ line.link-dead{stroke:#dc2626!important;stroke-dasharray:4 3!important;opacity:.
 
 <div class="tabs" id="cn-tabs">
   <button class="tab active" onclick="showCnTab('cn-diagram',this)">Interface map</button>
+  <button class="tab" onclick="showCnTab('cn-lshw',this)">lshw</button>
   <button class="tab" onclick="showCnTab('cn-ipbr',this)">ip -br addr</button>
   <button class="tab" onclick="showCnTab('cn-vips',this)">VIP breakdown</button>
   <button class="tab" onclick="showCnTab('cn-bond',this)">Bond status</button>
@@ -406,6 +534,25 @@ line.link-dead{stroke:#dc2626!important;stroke-dasharray:4 3!important;opacity:.
 <rect id="hl-gigabit1" x="36" y="712" width="294" height="138" rx="14" fill="#5F5E5A" opacity="0" pointer-events="none" style="transition:opacity .3s"/>
 <rect id="hl-gigabit2" x="346" y="712" width="294" height="138" rx="14" fill="#5F5E5A" opacity="0" pointer-events="none" style="transition:opacity .3s"/>
 </svg>
+</div>
+
+<!-- LSHW TAB -->
+<div id="cn-lshw" class="panel">
+<div class="con"><span class="p">selab-var-204 vastdata@<span class="h">se-az-arrow-cb4-cn-2</span> ~:$ lshw -c network -businfo</span>
+<span class="c">WARNING: you should run this program as super-user.</span>
+Bus info          Device        Class          Description
+==========================================================
+pci@0000:c1:00.0  <span class="i">enp193s0f0</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c1:00.1  <span class="i">enp193s0f1</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c2:00.0  <span class="i">enp194s0f0</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c2:00.1  <span class="i">enp194s0f1</span>    network        <span class="s">Intel Corporation</span>
+pci@0001:01:00.0  <span class="i">enp1s0f0</span>      network        <span class="u">MT2910 Family [ConnectX-7]</span>
+pci@0001:01:00.1  <span class="i">enp1s0f1</span>      network        <span class="u">MT2910 Family [ConnectX-7]</span>
+pci@0001:01:00.2  <span class="i">enp1s0f2</span>      network        <span class="v">ConnectX Family mlx5Gen Virtual Function</span>
+pci@0001:01:00.3  <span class="i">enp1s0f3</span>      network        <span class="v">ConnectX Family mlx5Gen Virtual Function</span>
+pci@0001:41:00.0  <span class="i">enp65s0f0</span>     network        <span class="u">MT2910 Family [ConnectX-7]</span>
+pci@0001:41:00.1  <span class="i">enp65s0f1</span>     network        <span class="u">MT2910 Family [ConnectX-7]</span>
+<span class="c">WARNING: output may be incomplete or inaccurate, you should run this program as super-user.</span></div>
 </div>
 
 <!-- IP BR TAB -->
@@ -549,6 +696,7 @@ Slave queue ID: 0
 
 <div class="tabs" id="cn-tabs-b">
   <button class="tab active" onclick="showCnTabB('cnb-diagram',this)">Interface map</button>
+  <button class="tab" onclick="showCnTabB('cnb-lshw',this)">lshw</button>
   <button class="tab" onclick="showCnTabB('cnb-ipbr',this)">ip -br addr</button>
   <button class="tab" onclick="showCnTabB('cnb-bond',this)">Bond status</button>
 </div>
@@ -629,6 +777,25 @@ Slave queue ID: 0
 <line x1="240" y1="1028" x2="272" y2="1028" stroke="#D85A30" stroke-width="1.5" marker-end="url(#arrow-b)"/><text class="ts" x="280" y="1032">Bond path</text>
 <line x1="380" y1="1028" x2="412" y2="1028" stroke="#D85A30" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arrow-b)"/><text class="ts" x="420" y="1032">Backup (standby)</text>
 </svg>
+</div>
+
+<!-- LSHW TAB -->
+<div id="cnb-lshw" class="panel">
+<div class="con"><span class="p">selab-var-204 vastdata@<span class="h">se-az-arrow-cb4-cn-2</span> ~:$ lshw -c network -businfo</span>
+<span class="c">WARNING: you should run this program as super-user.</span>
+Bus info          Device        Class          Description
+==========================================================
+pci@0000:c1:00.0  <span class="i">enp193s0f0</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c1:00.1  <span class="i">enp193s0f1</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c2:00.0  <span class="i">enp194s0f0</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c2:00.1  <span class="i">enp194s0f1</span>    network        <span class="s">Intel Corporation</span>
+pci@0001:01:00.0  <span class="i">enp1s0f0</span>      network        <span class="u">MT2910 Family [ConnectX-7]</span>
+pci@0001:01:00.1  <span class="i">enp1s0f1</span>      network        <span class="u">MT2910 Family [ConnectX-7]</span>
+pci@0001:01:00.2  <span class="i">enp1s0f2</span>      network        <span class="v">ConnectX Family mlx5Gen Virtual Function</span>
+pci@0001:01:00.3  <span class="i">enp1s0f3</span>      network        <span class="v">ConnectX Family mlx5Gen Virtual Function</span>
+pci@0001:41:00.0  <span class="i">enp65s0f0</span>     network        <span class="u">MT2910 Family [ConnectX-7]</span>
+pci@0001:41:00.1  <span class="i">enp65s0f1</span>     network        <span class="u">MT2910 Family [ConnectX-7]</span>
+<span class="c">WARNING: output may be incomplete or inaccurate, you should run this program as super-user.</span></div>
 </div>
 
 <!-- IP BR ADDR (bond mgmt config) -->
@@ -775,6 +942,7 @@ Slave queue ID: 0
 
 <div class="tabs" id="cn-tabs-s">
   <button class="tab active" onclick="showCnTabS('cns-diagram',this)">Interface map</button>
+  <button class="tab" onclick="showCnTabS('cns-lshw',this)">lshw</button>
   <button class="tab" onclick="showCnTabS('cns-ipbr',this)">ip -br addr</button>
   <button class="tab" onclick="showCnTabS('cns-vips',this)">VIP breakdown</button>
   <button class="tab" onclick="showCnTabS('cns-bond',this)">Bond status</button>
@@ -855,6 +1023,23 @@ Slave queue ID: 0
 <line x1="240" y1="872" x2="272" y2="872" stroke="#D85A30" stroke-width="1.5" marker-end="url(#arrow-cns)"/><text class="ts" x="280" y="876">Bond path</text>
 <line x1="380" y1="872" x2="412" y2="872" stroke="#D85A30" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arrow-cns)"/><text class="ts" x="420" y="876">Backup (standby)</text>
 </svg>
+</div>
+
+<!-- LSHW TAB -->
+<div id="cns-lshw" class="panel">
+<div class="con"><span class="p">selab-var-204 vastdata@<span class="h">se-az-arrow-cb4-cn-2</span> ~:$ lshw -c network -businfo</span>
+<span class="c">WARNING: you should run this program as super-user.</span>
+Bus info          Device        Class          Description
+==========================================================
+pci@0000:c1:00.0  <span class="i">enp193s0f0</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c1:00.1  <span class="i">enp193s0f1</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c2:00.0  <span class="i">enp194s0f0</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c2:00.1  <span class="i">enp194s0f1</span>    network        <span class="s">Intel Corporation</span>
+pci@0001:01:00.0  <span class="i">enp1s0f0</span>      network        <span class="u">MT2910 Family [ConnectX-7]</span>
+pci@0001:01:00.1  <span class="i">enp1s0f1</span>      network        <span class="u">MT2910 Family [ConnectX-7]</span>
+pci@0001:01:00.2  <span class="i">enp1s0f2</span>      network        <span class="v">ConnectX Family mlx5Gen Virtual Function</span>
+pci@0001:01:00.3  <span class="i">enp1s0f3</span>      network        <span class="v">ConnectX Family mlx5Gen Virtual Function</span>
+<span class="c">WARNING: output may be incomplete or inaccurate, you should run this program as super-user.</span></div>
 </div>
 
 <!-- IP BR TAB (single NIC) -->
@@ -1024,6 +1209,7 @@ Slave queue ID: 0
 
 <div class="tabs" id="cn-tabs-sb">
   <button class="tab active" onclick="showCnTabSB('cnsb-diagram',this)">Interface map</button>
+  <button class="tab" onclick="showCnTabSB('cnsb-lshw',this)">lshw</button>
   <button class="tab" onclick="showCnTabSB('cnsb-ipbr',this)">ip -br addr</button>
   <button class="tab" onclick="showCnTabSB('cnsb-vips',this)">VIP breakdown</button>
   <button class="tab" onclick="showCnTabSB('cnsb-bond',this)">Bond status</button>
@@ -1102,6 +1288,23 @@ Slave queue ID: 0
 <line x1="240" y1="874" x2="272" y2="874" stroke="#D85A30" stroke-width="1.5" marker-end="url(#arrow-cnsb)"/><text class="ts" x="280" y="878">Bond path</text>
 <line x1="380" y1="874" x2="412" y2="874" stroke="#D85A30" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arrow-cnsb)"/><text class="ts" x="420" y="878">Backup (standby)</text>
 </svg>
+</div>
+
+<!-- LSHW TAB -->
+<div id="cnsb-lshw" class="panel">
+<div class="con"><span class="p">selab-var-204 vastdata@<span class="h">se-az-arrow-cb4-cn-2</span> ~:$ lshw -c network -businfo</span>
+<span class="c">WARNING: you should run this program as super-user.</span>
+Bus info          Device        Class          Description
+==========================================================
+pci@0000:c1:00.0  <span class="i">enp193s0f0</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c1:00.1  <span class="i">enp193s0f1</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c2:00.0  <span class="i">enp194s0f0</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c2:00.1  <span class="i">enp194s0f1</span>    network        <span class="s">Intel Corporation</span>
+pci@0001:01:00.0  <span class="i">enp1s0f0</span>      network        <span class="u">MT2910 Family [ConnectX-7]</span>
+pci@0001:01:00.1  <span class="i">enp1s0f1</span>      network        <span class="u">MT2910 Family [ConnectX-7]</span>
+pci@0001:01:00.2  <span class="i">enp1s0f2</span>      network        <span class="v">ConnectX Family mlx5Gen Virtual Function</span>
+pci@0001:01:00.3  <span class="i">enp1s0f3</span>      network        <span class="v">ConnectX Family mlx5Gen Virtual Function</span>
+<span class="c">WARNING: output may be incomplete or inaccurate, you should run this program as super-user.</span></div>
 </div>
 
 <!-- IP BR TAB (single NIC, mgmt via bond) -->
@@ -1316,6 +1519,7 @@ Slave queue ID: 0
 
 <div class="tabs" id="eb-tabs">
   <button class="tab active" onclick="showEbTab('eb-diagram',this)">Interface map</button>
+  <button class="tab" onclick="showEbTab('eb-lshw',this)">lshw</button>
   <button class="tab" onclick="showEbTab('eb-ipbr',this)">ip -br addr</button>
   <button class="tab" onclick="showEbTab('eb-vips',this)">VIP breakdown</button>
   <button class="tab" onclick="showEbTab('eb-bond',this)">Bond status</button>
@@ -1392,6 +1596,25 @@ Slave queue ID: 0
 <rect id="hl-eb-gigabit1" x="36" y="712" width="294" height="138" rx="14" fill="#5F5E5A" opacity="0" pointer-events="none" style="transition:opacity .3s"/>
 <rect id="hl-eb-gigabit2" x="346" y="712" width="294" height="138" rx="14" fill="#5F5E5A" opacity="0" pointer-events="none" style="transition:opacity .3s"/>
 </svg>
+</div>
+
+<!-- LSHW TAB -->
+<div id="eb-lshw" class="panel">
+<div class="con"><span class="p">selab-var-204 vastdata@<span class="h">se-az-arrow-cb4-cn-2</span> ~:$ lshw -c network -businfo</span>
+<span class="c">WARNING: you should run this program as super-user.</span>
+Bus info          Device        Class          Description
+==========================================================
+pci@0000:c1:00.0  <span class="i">enp193s0f0</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c1:00.1  <span class="i">enp193s0f1</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c2:00.0  <span class="i">enp194s0f0</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c2:00.1  <span class="i">enp194s0f1</span>    network        <span class="s">Intel Corporation</span>
+pci@0001:01:00.0  <span class="i">enp1s0f0</span>      network        <span class="u">MT2910 Family [ConnectX-7]</span>
+pci@0001:01:00.1  <span class="i">enp1s0f1</span>      network        <span class="u">MT2910 Family [ConnectX-7]</span>
+pci@0001:01:00.2  <span class="i">enp1s0f2</span>      network        <span class="v">ConnectX Family mlx5Gen Virtual Function</span>
+pci@0001:01:00.3  <span class="i">enp1s0f3</span>      network        <span class="v">ConnectX Family mlx5Gen Virtual Function</span>
+pci@0001:41:00.0  <span class="i">enp65s0f0</span>     network        <span class="u">MT2910 Family [ConnectX-7]</span>
+pci@0001:41:00.1  <span class="i">enp65s0f1</span>     network        <span class="u">MT2910 Family [ConnectX-7]</span>
+<span class="c">WARNING: output may be incomplete or inaccurate, you should run this program as super-user.</span></div>
 </div>
 
 <!-- IP BR TAB -->
@@ -1535,6 +1758,7 @@ Slave queue ID: 0
 
 <div class="tabs" id="eb-tabs-b">
   <button class="tab active" onclick="showEbTabB('ebb-diagram',this)">Interface map</button>
+  <button class="tab" onclick="showEbTabB('ebb-lshw',this)">lshw</button>
   <button class="tab" onclick="showEbTabB('ebb-ipbr',this)">ip -br addr</button>
   <button class="tab" onclick="showEbTabB('ebb-bond',this)">Bond status</button>
 </div>
@@ -1615,6 +1839,25 @@ Slave queue ID: 0
 <line x1="240" y1="1028" x2="272" y2="1028" stroke="#D85A30" stroke-width="1.5" marker-end="url(#arrow-ebb)"/><text class="ts" x="280" y="1032">Bond path</text>
 <line x1="380" y1="1028" x2="412" y2="1028" stroke="#D85A30" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arrow-ebb)"/><text class="ts" x="420" y="1032">Backup (standby)</text>
 </svg>
+</div>
+
+<!-- LSHW TAB -->
+<div id="ebb-lshw" class="panel">
+<div class="con"><span class="p">selab-var-204 vastdata@<span class="h">se-az-arrow-cb4-cn-2</span> ~:$ lshw -c network -businfo</span>
+<span class="c">WARNING: you should run this program as super-user.</span>
+Bus info          Device        Class          Description
+==========================================================
+pci@0000:c1:00.0  <span class="i">enp193s0f0</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c1:00.1  <span class="i">enp193s0f1</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c2:00.0  <span class="i">enp194s0f0</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c2:00.1  <span class="i">enp194s0f1</span>    network        <span class="s">Intel Corporation</span>
+pci@0001:01:00.0  <span class="i">enp1s0f0</span>      network        <span class="u">MT2910 Family [ConnectX-7]</span>
+pci@0001:01:00.1  <span class="i">enp1s0f1</span>      network        <span class="u">MT2910 Family [ConnectX-7]</span>
+pci@0001:01:00.2  <span class="i">enp1s0f2</span>      network        <span class="v">ConnectX Family mlx5Gen Virtual Function</span>
+pci@0001:01:00.3  <span class="i">enp1s0f3</span>      network        <span class="v">ConnectX Family mlx5Gen Virtual Function</span>
+pci@0001:41:00.0  <span class="i">enp65s0f0</span>     network        <span class="u">MT2910 Family [ConnectX-7]</span>
+pci@0001:41:00.1  <span class="i">enp65s0f1</span>     network        <span class="u">MT2910 Family [ConnectX-7]</span>
+<span class="c">WARNING: output may be incomplete or inaccurate, you should run this program as super-user.</span></div>
 </div>
 
 <!-- IP BR ADDR (bond mgmt config) -->
@@ -1761,6 +2004,7 @@ Slave queue ID: 0
 
 <div class="tabs" id="eb-tabs-s">
   <button class="tab active" onclick="showEbTabS('ebs-diagram',this)">Interface map</button>
+  <button class="tab" onclick="showEbTabS('ebs-lshw',this)">lshw</button>
   <button class="tab" onclick="showEbTabS('ebs-ipbr',this)">ip -br addr</button>
   <button class="tab" onclick="showEbTabS('ebs-vips',this)">VIP breakdown</button>
   <button class="tab" onclick="showEbTabS('ebs-bond',this)">Bond status</button>
@@ -1829,6 +2073,23 @@ Slave queue ID: 0
 <line x1="240" y1="834" x2="272" y2="834" stroke="#D85A30" stroke-width="1.5" marker-end="url(#arrow-ebs)"/><text class="ts" x="280" y="838">Bond path</text>
 <line x1="380" y1="834" x2="412" y2="834" stroke="#D85A30" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arrow-ebs)"/><text class="ts" x="420" y="838">Backup (standby)</text>
 </svg>
+</div>
+
+<!-- LSHW TAB -->
+<div id="ebs-lshw" class="panel">
+<div class="con"><span class="p">selab-var-204 vastdata@<span class="h">se-az-arrow-cb4-cn-2</span> ~:$ lshw -c network -businfo</span>
+<span class="c">WARNING: you should run this program as super-user.</span>
+Bus info          Device        Class          Description
+==========================================================
+pci@0000:c1:00.0  <span class="i">enp193s0f0</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c1:00.1  <span class="i">enp193s0f1</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c2:00.0  <span class="i">enp194s0f0</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c2:00.1  <span class="i">enp194s0f1</span>    network        <span class="s">Intel Corporation</span>
+pci@0001:01:00.0  <span class="i">enp1s0f0</span>      network        <span class="u">MT2910 Family [ConnectX-7]</span>
+pci@0001:01:00.1  <span class="i">enp1s0f1</span>      network        <span class="u">MT2910 Family [ConnectX-7]</span>
+pci@0001:01:00.2  <span class="i">enp1s0f2</span>      network        <span class="v">ConnectX Family mlx5Gen Virtual Function</span>
+pci@0001:01:00.3  <span class="i">enp1s0f3</span>      network        <span class="v">ConnectX Family mlx5Gen Virtual Function</span>
+<span class="c">WARNING: output may be incomplete or inaccurate, you should run this program as super-user.</span></div>
 </div>
 
 <!-- IP BR TAB (single NIC) -->
@@ -1998,6 +2259,7 @@ Slave queue ID: 0
 
 <div class="tabs" id="eb-tabs-sb">
   <button class="tab active" onclick="showEbTabSB('ebsb-diagram',this)">Interface map</button>
+  <button class="tab" onclick="showEbTabSB('ebsb-lshw',this)">lshw</button>
   <button class="tab" onclick="showEbTabSB('ebsb-ipbr',this)">ip -br addr</button>
   <button class="tab" onclick="showEbTabSB('ebsb-vips',this)">VIP breakdown</button>
   <button class="tab" onclick="showEbTabSB('ebsb-bond',this)">Bond status</button>
@@ -2076,6 +2338,23 @@ Slave queue ID: 0
 <line x1="240" y1="874" x2="272" y2="874" stroke="#D85A30" stroke-width="1.5" marker-end="url(#arrow-ebsb)"/><text class="ts" x="280" y="878">Bond path</text>
 <line x1="380" y1="874" x2="412" y2="874" stroke="#D85A30" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arrow-ebsb)"/><text class="ts" x="420" y="878">Backup (standby)</text>
 </svg>
+</div>
+
+<!-- LSHW TAB -->
+<div id="ebsb-lshw" class="panel">
+<div class="con"><span class="p">selab-var-204 vastdata@<span class="h">se-az-arrow-cb4-cn-2</span> ~:$ lshw -c network -businfo</span>
+<span class="c">WARNING: you should run this program as super-user.</span>
+Bus info          Device        Class          Description
+==========================================================
+pci@0000:c1:00.0  <span class="i">enp193s0f0</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c1:00.1  <span class="i">enp193s0f1</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c2:00.0  <span class="i">enp194s0f0</span>    network        <span class="s">Intel Corporation</span>
+pci@0000:c2:00.1  <span class="i">enp194s0f1</span>    network        <span class="s">Intel Corporation</span>
+pci@0001:01:00.0  <span class="i">enp1s0f0</span>      network        <span class="u">MT2910 Family [ConnectX-7]</span>
+pci@0001:01:00.1  <span class="i">enp1s0f1</span>      network        <span class="u">MT2910 Family [ConnectX-7]</span>
+pci@0001:01:00.2  <span class="i">enp1s0f2</span>      network        <span class="v">ConnectX Family mlx5Gen Virtual Function</span>
+pci@0001:01:00.3  <span class="i">enp1s0f3</span>      network        <span class="v">ConnectX Family mlx5Gen Virtual Function</span>
+<span class="c">WARNING: output may be incomplete or inaccurate, you should run this program as super-user.</span></div>
 </div>
 
 <!-- IP BR TAB (single NIC, mgmt via bond) -->
@@ -2527,25 +2806,108 @@ Slave queue ID: 0
 </div><!-- end page-dnode -->
 
 <!-- =============================== -->
+<!-- PAGE: NETWORK DESIGN             -->
+<!-- =============================== -->
+<div id="page-netdesign" class="page">
+
+<div class="page-header">
+  <h2>Converged vs Split Networking</h2>
+  <p>How VAST node NICs connect to the switching fabric — the foundation of your network design</p>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px">
+  <div class="topo-size-card nd-card active" data-nd="conv-dual" onclick="setNetDesign('conv-dual')">
+    <div class="topo-size-icon" style="font-size:11px;font-weight:700">2NIC</div>
+    <div class="topo-size-info">
+      <div class="topo-size-title">Converged — Dual NIC</div>
+      <div class="topo-size-sub" style="color:#dc2626">Cisco EBox Only</div>
+      <div class="topo-size-detail">Frontend &amp; backend NICs both connect to the same switch pair</div>
+    </div>
+  </div>
+  <div class="topo-size-card nd-card" data-nd="conv-single" onclick="setNetDesign('conv-single')">
+    <div class="topo-size-icon" style="font-size:11px;font-weight:700">1NIC</div>
+    <div class="topo-size-info">
+      <div class="topo-size-title">Converged — Single NIC</div>
+      <div class="topo-size-sub">Same leaf pair</div>
+      <div class="topo-size-detail">Backend NIC only — VIPs &amp; cluster mesh share one NIC via SR-IOV</div>
+    </div>
+  </div>
+  <div class="topo-size-card nd-card" data-nd="split" onclick="setNetDesign('split')">
+    <div class="topo-size-icon" style="background:#FFF7ED;border-color:#f97316;color:#f97316;font-size:11px;font-weight:700">SPLT</div>
+    <div class="topo-size-info">
+      <div class="topo-size-title">Split</div>
+      <div class="topo-size-sub" style="color:#f97316">Separate domains</div>
+      <div class="topo-size-detail">Customer switches for VIPs, dedicated VAST leaf pair for cluster mesh</div>
+    </div>
+  </div>
+</div>
+
+<div id="netdesign-svg-wrap" style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:20px;overflow:hidden;min-height:300px">
+</div>
+
+<div id="netdesign-desc" style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-bottom:20px">
+</div>
+
+<div style="text-align:center;padding:12px 0 4px">
+  <span style="font-size:13px;color:var(--text3)">These designs map to the "Connected" and "Isolated" modes in →</span>
+  <a onclick="switchPage('topo',document.querySelector('[onclick*=switchPage][onclick*=topo]'))" style="font-size:13px;color:var(--accent);cursor:pointer;margin-left:6px;font-weight:500;text-decoration:underline">L2 / L3 Topologies</a>
+</div>
+
+</div><!-- end page-netdesign -->
+
+<!-- =============================== -->
 <!-- PAGE 2: TOPOLOGY                 -->
 <!-- =============================== -->
 <div id="page-topo" class="page">
 
 <div class="page-header">
-  <h2>L2 &amp; L3 Network Topologies</h2>
-  <p>Standard VAST Data fabric patterns with EBox or CBox+DBox server types</p>
+  <h2>Network Topologies</h2>
+  <p>Standard VAST Data fabric patterns — select a deployment size to explore</p>
 </div>
 
-<div class="section-label">L2 topologies</div>
-<div class="topo-tabs" id="topo-tabs-l2"></div>
-<div class="section-label" style="margin-top:10px">L3 EVPN-BGP (VXLAN)</div>
-<div class="topo-tabs" id="topo-tabs-l3"></div>
-
-<div class="topo-toggle-row" style="margin-top:12px">
-  <span style="font-weight:500;color:var(--text)">Server type:</span>
-  <label id="tog-ebox" class="active" onclick="setTopoServerType('ebox')"><input type="radio" name="stype" checked><span class="toggle-dot" style="background:#2563eb"></span> EBox</label>
-  <label id="tog-cbox" onclick="setTopoServerType('cbox')"><input type="radio" name="stype"><span class="toggle-dot" style="background:linear-gradient(135deg,#e07020,#7c3aed)"></span> CBox + DBox</label>
+<!-- Size category cards -->
+<div id="topo-size-cards" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px">
+  <div class="topo-size-card active" data-size="small" onclick="setTopoSize('small')">
+    <div class="topo-size-icon">S</div>
+    <div class="topo-size-info">
+      <div class="topo-size-title">Small</div>
+      <div class="topo-size-sub">L2 — Pair switches</div>
+      <div class="topo-size-detail">Cluster won't exceed port count of a single leaf pair</div>
+    </div>
+  </div>
+  <div class="topo-size-card" data-size="medium" onclick="setTopoSize('medium')">
+    <div class="topo-size-icon">M</div>
+    <div class="topo-size-info">
+      <div class="topo-size-title">Medium</div>
+      <div class="topo-size-sub">L2 — Spine-leaf</div>
+      <div class="topo-size-detail">Cluster won't exceed port count of the spine pair</div>
+    </div>
+  </div>
+  <div class="topo-size-card" data-size="large" onclick="setTopoSize('large')">
+    <div class="topo-size-icon">L</div>
+    <div class="topo-size-info">
+      <div class="topo-size-title">Large</div>
+      <div class="topo-size-sub">L3 — EVPN-BGP (VXLAN)</div>
+      <div class="topo-size-detail">BGP underlay + VXLAN overlay, 100+ nodes</div>
+    </div>
+  </div>
 </div>
+
+<!-- Sub-options row: isolated / connected + server type -->
+<div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:14px">
+  <div class="topo-toggle-row" id="conn-toggle" style="margin-bottom:0">
+    <span style="font-weight:500;color:var(--text)">Uplink:</span>
+    <label id="tog-iso" class="active" onclick="setTopoConn('iso')"><input type="radio" name="conn" checked> Isolated</label>
+    <label id="tog-conn" onclick="setTopoConn('conn')"><input type="radio" name="conn"> Connected</label>
+  </div>
+  <div style="width:1px;height:24px;background:var(--border)"></div>
+  <div class="topo-toggle-row" style="margin-bottom:0">
+    <span style="font-weight:500;color:var(--text)">Server type:</span>
+    <label id="tog-ebox" class="active" onclick="setTopoServerType('ebox')"><input type="radio" name="stype" checked><span class="toggle-dot" style="background:#2563eb"></span> EBox</label>
+    <label id="tog-cbox" onclick="setTopoServerType('cbox')"><input type="radio" name="stype"><span class="toggle-dot" style="background:linear-gradient(135deg,#e07020,#7c3aed)"></span> CBox + DBox</label>
+  </div>
+</div>
+
 <div class="topo-desc" id="topo-desc"></div>
 <div id="topo-diagram"></div>
 <div class="topo-toggle-row" id="failure-bar" style="margin-top:10px">
@@ -2754,6 +3116,55 @@ const detailContent={
         <li>"Connected" means fabric uplinks to customer switches directly</li>
       </ul>
     </div>
+  `,
+  netdesign:`
+    <h3>Network Design</h3>
+    <div class="detail-section">
+      <h4>Converged — Dual NIC</h4>
+      <p>Both the <span class="detail-badge db-green">Frontend NIC</span> and <span class="detail-badge db-green">Backend NIC</span> connect to the <strong>same VAST leaf pair</strong>. All traffic — client VIPs and cluster mesh — shares the same switching domain.</p>
+      <p style="margin-top:6px"><strong>Benefits:</strong></p>
+      <ul>
+        <li>Fewer switches — single leaf pair for everything</li>
+        <li>Simpler cabling — no need to run separate uplinks to different switch tiers</li>
+        <li>Lower cost — fewer ports consumed on customer infrastructure</li>
+      </ul>
+      <p style="margin-top:6px"><strong>Considerations:</strong></p>
+      <ul>
+        <li>Shared bandwidth — client traffic and cluster mesh compete for same uplinks</li>
+        <li>Switch failure impacts both VIP access and backend mesh simultaneously</li>
+      </ul>
+    </div>
+    <div class="detail-divider"></div>
+    <div class="detail-section">
+      <h4>Converged — Single NIC</h4>
+      <p>Only the <span class="detail-badge db-green">Backend NIC</span> is present. It handles both cluster mesh <em>and</em> client VIP traffic via <strong>SR-IOV virtual functions</strong>. The physical NIC connects to the same VAST leaf pair.</p>
+      <ul>
+        <li>VIPs are served through SR-IOV VFs on the backend NIC</li>
+        <li>Cluster mesh runs on PF sub-interfaces (VLAN 69)</li>
+        <li>Further reduces hardware — no separate frontend NIC required</li>
+      </ul>
+    </div>
+    <div class="detail-divider"></div>
+    <div class="detail-section">
+      <h4>Split</h4>
+      <p>Two independent switching domains:</p>
+      <ul>
+        <li><span class="detail-badge db-blue">Frontend NIC</span> connects to <strong>Customer switches</strong> — carries client VIP traffic (NFS, SMB, S3)</li>
+        <li><span class="detail-badge db-green">Backend NIC</span> connects to <strong>VAST leaf pair</strong> — dedicated to cluster mesh and VLAN 69 paths</li>
+      </ul>
+      <p style="margin-top:6px"><strong>Benefits:</strong></p>
+      <ul>
+        <li>Traffic isolation — VIP and mesh traffic never compete on the same links</li>
+        <li>Independent failure domains — customer switch issues don't affect cluster mesh</li>
+        <li>Dedicated bandwidth for each traffic type</li>
+      </ul>
+      <p style="margin-top:6px"><strong>Considerations:</strong></p>
+      <ul>
+        <li>More switches required — customer pair + VAST leaf pair</li>
+        <li>More complex cabling — separate uplinks to two switch tiers</li>
+      </ul>
+      <p style="margin-top:8px;padding:8px 10px;border-radius:6px;background:#FFF7ED;border-left:3px solid #f97316;font-size:12px"><strong>Topology mapping:</strong> Split = "Isolated" in the L2/L3 Topology page. Converged = "Connected".</p>
+    </div>
   `
 };
 
@@ -2763,7 +3174,7 @@ function switchPage(id,el){
   document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
   el.classList.add('active');
-  if(id==='topo'){updateTopoDetail()}else{document.getElementById('detail-panel').innerHTML=detailContent[id]}
+  if(id==='topo'){updateTopoDetail()}else if(id==='netdesign'){document.getElementById('detail-panel').innerHTML=detailContent.netdesign;renderNetDesign();updateNdDesc();}else{document.getElementById('detail-panel').innerHTML=detailContent[id]}
   document.querySelector('.sidebar').classList.remove('open');
   window.scrollTo(0,0);
 }
@@ -3000,7 +3411,7 @@ function highlightDnPort(type){
 }
 
 /* ===== L2+L3 Topology Engine ===== */
-let topoServerType='ebox',topoActive=0;
+let topoServerType='ebox',topoActive=2;
 const topos=[
   {id:'sl-disconn',label:'Spine-leaf \u00b7 isolated',group:'l2',
     descE:'VAST spine-leaf fabric is <strong>not connected</strong> to the customer network. EBoxes dual-home to the customer MLAG pair (data path) and to VAST leaf switches (storage path). Each leaf uplinks to both spines (full mesh).',
@@ -3022,16 +3433,31 @@ const topos=[
     descC:'L3 EVPN-BGP VXLAN fabric <strong>uplinks to the customer network</strong> via BGP peering. Each spine peers with both customer switches. Each leaf pair serves a CBox + DBox, both dual-homed to their leaf pair. BGP underlay with VXLAN overlay.'}
 ];
 
-const l2TabsEl=document.getElementById('topo-tabs-l2'),l3TabsEl=document.getElementById('topo-tabs-l3');
 const topoDescEl=document.getElementById('topo-desc'),topoDiagEl=document.getElementById('topo-diagram'),topoLegEl=document.getElementById('topo-legend');
-topos.forEach((t,i)=>{const b=document.createElement('div');b.className='topo-tab'+(i===0?' active':'');b.textContent=t.label;b.onclick=()=>{topoActive=i;renderTopo()};(t.group==='l2'?l2TabsEl:l3TabsEl).appendChild(b)});
-
+let topoSize='small',topoConn='iso';
+const sizeIndexMap={
+  'small-iso':2,'small-conn':3,
+  'medium-iso':0,'medium-conn':1,
+  'large-iso':4,'large-conn':5
+};
+function resolveTopoIndex(){topoActive=sizeIndexMap[topoSize+'-'+topoConn]||0}
+function setTopoSize(s){
+  topoSize=s;resolveTopoIndex();
+  document.querySelectorAll('.topo-size-card').forEach(c=>c.classList.toggle('active',c.dataset.size===s));
+  renderTopo();
+}
+window.setTopoSize=setTopoSize;
+function setTopoConn(c){
+  topoConn=c;resolveTopoIndex();
+  document.getElementById('tog-iso').className=c==='iso'?'active':'';
+  document.getElementById('tog-conn').className=c==='conn'?'active':'';
+  renderTopo();
+}
+window.setTopoConn=setTopoConn;
 function setTopoServerType(t){topoServerType=t;document.getElementById('tog-ebox').className=t==='ebox'?'active':'';document.getElementById('tog-cbox').className=t==='cbox'?'active':'';renderTopo()}
 window.setTopoServerType=setTopoServerType;
 
 function renderTopo(){
-  document.querySelectorAll('.topo-tab').forEach(t=>t.classList.remove('active'));
-  [...l2TabsEl.children,...l3TabsEl.children][topoActive].classList.add('active');
   topoDescEl.innerHTML=topoServerType==='ebox'?topos[topoActive].descE:topos[topoActive].descC;
   topoDiagEl.innerHTML='';
   activeFailure=null;
@@ -3357,6 +3783,7 @@ function buildFailureButtons(){
 }
 
 function updateTopoDetail(){
+  if(!document.getElementById('page-topo').classList.contains('active'))return;
   const topo=topos[topoActive];
   const d=topoDetailData[topo.id];
   if(!d){document.getElementById('detail-panel').innerHTML=detailContent.topo;return}
@@ -3379,6 +3806,418 @@ function updateTopoDetail(){
 }
 
 renderTopo();
+
+/* ===== Converged vs Split ===== */
+let ndActive='conv-dual';
+function setNetDesign(type){
+  ndActive=type;
+  document.querySelectorAll('.nd-card').forEach(c=>c.classList.toggle('active',c.dataset.nd===type));
+  renderNetDesign();
+  updateNdDesc();
+}
+function updateNdDesc(){
+  const d=document.getElementById('netdesign-desc');
+  if(!d)return;
+  const descs={
+    'conv-dual':{title:'Converged — Dual NIC',color:'#2563eb',body:`<p>Both the <strong style="color:#22c55e">Frontend NIC</strong> and <strong style="color:#f97316">Backend NIC</strong> uplink to the <strong>same VAST leaf pair</strong>. Client VIPs and cluster mesh traffic share the same switching domain.</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px"><div><p style="font-size:11px;font-weight:600;color:var(--text3);margin-bottom:4px">BENEFITS</p><ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.7"><li>Fewer switches &#8212; one leaf pair</li><li>Simpler cabling</li><li>Lower cost</li></ul></div><div><p style="font-size:11px;font-weight:600;color:var(--text3);margin-bottom:4px">CONSIDERATIONS</p><ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.7"><li>Shared bandwidth between traffic types</li><li>Switch failure affects both domains</li></ul></div></div>`},
+    'conv-single':{title:'Converged — Single NIC',color:'#7c3aed',body:`<p>Only the <strong style="color:#f97316">Backend NIC</strong> is present &#8212; it handles <strong>both client VIP traffic and cluster mesh</strong> via SR-IOV virtual functions. Everything connects to the same VAST leaf pair.</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px"><div><p style="font-size:11px;font-weight:600;color:var(--text3);margin-bottom:4px">BENEFITS</p><ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.7"><li>No frontend NIC required</li><li>Minimum hardware footprint</li><li>Same single switching domain</li></ul></div><div><p style="font-size:11px;font-weight:600;color:var(--text3);margin-bottom:4px">HOW IT WORKS</p><ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.7"><li>VIPs via SR-IOV VFs on backend NIC</li><li>Cluster mesh on PF VLAN 69 sub-interfaces</li></ul></div></div>`},
+    'split':{title:'Split Networking',color:'#f97316',body:`<p>Two <strong>independent switching domains</strong>: the <strong style="color:#2563eb">Frontend NIC</strong> connects to customer switches for VIP traffic, while the <strong style="color:#f97316">Backend NIC</strong> connects to a dedicated VAST leaf pair for cluster mesh.</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px"><div><p style="font-size:11px;font-weight:600;color:var(--text3);margin-bottom:4px">BENEFITS</p><ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.7"><li>Traffic isolation</li><li>Independent failure domains</li><li>Dedicated bandwidth per type</li></ul></div><div><p style="font-size:11px;font-weight:600;color:var(--text3);margin-bottom:4px">CONSIDERATIONS</p><ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.7"><li>More switches needed</li><li>More complex cabling</li><li>Higher cost</li></ul></div></div><p style="margin-top:10px;padding:7px 10px;border-radius:6px;background:#FFF7ED;border-left:3px solid #f97316;font-size:12px"><strong>Topology mapping:</strong> Split = "Isolated" mode &bull; Converged = "Connected" mode in the L2/L3 page.</p>`}
+  };
+  const info=descs[ndActive];
+  d.innerHTML=`<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><div style="width:10px;height:10px;border-radius:50%;background:${info.color}"></div><h3 style="margin:0;font-size:14px;color:${info.color}">${info.title}</h3></div>${info.body}`;
+}
+function renderNetDesign(){
+  const wrap=document.getElementById('netdesign-svg-wrap');
+  if(!wrap)return;
+  if(ndActive==='conv-dual'){wrap.innerHTML=svgConvergedDual();}
+  else if(ndActive==='conv-single'){wrap.innerHTML=svgConvergedSingle();}
+  else{wrap.innerHTML=svgSplit();}
+}
+function svgConvergedDual(){
+  return `<svg viewBox="0 0 800 580" width="100%" style="display:block;font-family:inherit">
+  <defs>
+    <marker id="ah-blue" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#3b82f6"/></marker>
+    <marker id="ah-gray" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#6b7280"/></marker>
+    <marker id="ah-green" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#22c55e"/></marker>
+    <marker id="ah-orange" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#f97316"/></marker>
+  </defs>
+  <!-- VAST Switching Domain box -->
+  <rect x="140" y="244" width="490" height="120" rx="10" fill="#FFF7ED" stroke="#f97316" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.8"/>
+  <text x="385" y="266" text-anchor="middle" font-size="11" font-weight="600" fill="#d97706">VAST Switching Domain</text>
+  <!-- Client Servers — centered -->
+  <rect x="305" y="22" width="150" height="60" rx="8" fill="var(--bg3)" stroke="var(--border)" stroke-width="1.5"/>
+  <text x="380" y="46" text-anchor="middle" font-size="12" font-weight="600" fill="var(--text)">Client Servers</text>
+  <text x="380" y="64" text-anchor="middle" font-size="11" fill="var(--text3)">NFS / SMB / S3</text>
+  <!-- Customer switches -->
+  <rect x="158" y="144" width="182" height="60" rx="8" fill="white" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="249" y="170" text-anchor="middle" font-size="12" font-weight="700" fill="#374151">Customer SW-1</text>
+  <text x="249" y="188" text-anchor="middle" font-size="11" fill="var(--text3)">MLAG Active</text>
+  <rect x="422" y="144" width="182" height="60" rx="8" fill="white" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="513" y="170" text-anchor="middle" font-size="12" font-weight="700" fill="#374151">Customer SW-2</text>
+  <text x="513" y="188" text-anchor="middle" font-size="11" fill="var(--text3)">MLAG Active</text>
+  <line x1="340" y1="174" x2="422" y2="174" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="381" y="168" text-anchor="middle" font-size="10" fill="#9ca3af">ISL</text>
+  <!-- VAST Leaf pair -->
+  <rect x="158" y="270" width="182" height="60" rx="8" fill="white" stroke="#f97316" stroke-width="2"/>
+  <text x="249" y="296" text-anchor="middle" font-size="12" font-weight="700" fill="#ea580c">VAST Leaf-1</text>
+  <text x="249" y="314" text-anchor="middle" font-size="11" fill="var(--text3)">MLAG Active</text>
+  <rect x="422" y="270" width="182" height="60" rx="8" fill="white" stroke="#f97316" stroke-width="2"/>
+  <text x="513" y="296" text-anchor="middle" font-size="12" font-weight="700" fill="#ea580c">VAST Leaf-2</text>
+  <text x="513" y="314" text-anchor="middle" font-size="11" fill="var(--text3)">MLAG Active</text>
+  <line x1="340" y1="300" x2="422" y2="300" stroke="#f97316" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="381" y="294" text-anchor="middle" font-size="10" fill="#f97316">ISL</text>
+  <!-- VAST Server (Dual NIC — Cisco EBox only) -->
+  <rect x="140" y="445" width="480" height="98" rx="8" fill="var(--bg2)" stroke="var(--border)" stroke-width="1.5"/>
+  <text x="380" y="462" text-anchor="middle" font-size="12" font-weight="600" fill="var(--text)">VAST Server</text>
+  <rect x="291" y="467" width="178" height="22" rx="11" fill="#FEF2F2" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="380" y="482" text-anchor="middle" font-size="10" font-weight="700" fill="#dc2626">&#9888; Cisco EBox Only</text>
+  <rect x="156" y="492" width="174" height="42" rx="6" fill="#F0FDF4" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="243" y="518" text-anchor="middle" font-size="12" font-weight="600" fill="#22c55e">Frontend NIC</text>
+  <rect x="450" y="492" width="154" height="42" rx="6" fill="#FFF7ED" stroke="#f97316" stroke-width="1.5"/>
+  <text x="527" y="518" text-anchor="middle" font-size="12" font-weight="600" fill="#f97316">Backend NIC</text>
+  <!-- Clients → Customer switches (symmetric V from center) -->
+  <line x1="380" y1="82" x2="249" y2="144" stroke="#3b82f6" stroke-width="2" marker-end="url(#ah-blue)"/>
+  <line x1="380" y1="82" x2="513" y2="144" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#ah-blue)"/>
+  <text x="380" y="118" text-anchor="middle" font-size="11" fill="#3b82f6">Client VIPs</text>
+  <!-- Customer switches → VAST Leaf pair (uplinks, cross-connected) -->
+  <line x1="249" y1="204" x2="249" y2="270" stroke="#6b7280" stroke-width="1.5" marker-end="url(#ah-gray)"/>
+  <line x1="249" y1="204" x2="510" y2="270" stroke="#6b7280" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#ah-gray)"/>
+  <line x1="513" y1="204" x2="513" y2="270" stroke="#6b7280" stroke-width="1.5" marker-end="url(#ah-gray)"/>
+  <line x1="513" y1="204" x2="252" y2="270" stroke="#6b7280" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#ah-gray)"/>
+  <text x="130" y="240" text-anchor="middle" font-size="10" fill="#6b7280">uplinks</text>
+  <!-- Frontend NIC → VAST Leaf pair -->
+  <line x1="249" y1="492" x2="249" y2="330" stroke="#22c55e" stroke-width="2" marker-end="url(#ah-green)"/>
+  <line x1="270" y1="492" x2="505" y2="330" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#ah-green)"/>
+  <text x="184" y="418" text-anchor="middle" font-size="11" fill="#22c55e">VIP traffic</text>
+  <!-- Backend NIC → VAST Leaf pair -->
+  <line x1="513" y1="492" x2="513" y2="330" stroke="#f97316" stroke-width="2" marker-end="url(#ah-orange)"/>
+  <line x1="470" y1="492" x2="268" y2="330" stroke="#f97316" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#ah-orange)"/>
+  <text x="585" y="412" text-anchor="middle" font-size="11" fill="#f97316">Cluster mesh</text>
+  <!-- Callout -->
+  <rect x="642" y="22" width="146" height="142" rx="8" fill="#FFF7ED" stroke="#fed7aa" stroke-width="1.5"/>
+  <text x="715" y="50" text-anchor="middle" font-size="12" font-weight="700" fill="#c2410c">Both NICs</text>
+  <text x="715" y="70" text-anchor="middle" font-size="11" fill="#c2410c">&#8594; VAST leaf pair</text>
+  <text x="715" y="94" text-anchor="middle" font-size="10" fill="#6b7280">Clients via customer</text>
+  <text x="715" y="110" text-anchor="middle" font-size="10" fill="#6b7280">switches (uplink)</text>
+  <text x="715" y="128" text-anchor="middle" font-size="10" fill="#6b7280">One switch pair for all</text>
+  <text x="715" y="144" text-anchor="middle" font-size="10" fill="#6b7280">traffic types</text>
+  </svg>`;
+}
+function svgConvergedSingle(){
+  return `<svg viewBox="0 0 800 580" width="100%" style="display:block;font-family:inherit">
+  <defs>
+    <marker id="as-blue" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#3b82f6"/></marker>
+    <marker id="as-gray" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#6b7280"/></marker>
+    <marker id="as-purple" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#7c3aed"/></marker>
+  </defs>
+  <!-- VAST Switching Domain box -->
+  <rect x="140" y="244" width="490" height="120" rx="10" fill="#FFF7ED" stroke="#f97316" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.8"/>
+  <text x="385" y="266" text-anchor="middle" font-size="11" font-weight="600" fill="#d97706">VAST Switching Domain</text>
+  <!-- Client Servers — centered -->
+  <rect x="305" y="22" width="150" height="60" rx="8" fill="var(--bg3)" stroke="var(--border)" stroke-width="1.5"/>
+  <text x="380" y="46" text-anchor="middle" font-size="12" font-weight="600" fill="var(--text)">Client Servers</text>
+  <text x="380" y="64" text-anchor="middle" font-size="11" fill="var(--text3)">NFS / SMB / S3</text>
+  <!-- Customer switches -->
+  <rect x="158" y="144" width="182" height="60" rx="8" fill="white" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="249" y="170" text-anchor="middle" font-size="12" font-weight="700" fill="#374151">Customer SW-1</text>
+  <text x="249" y="188" text-anchor="middle" font-size="11" fill="var(--text3)">MLAG Active</text>
+  <rect x="422" y="144" width="182" height="60" rx="8" fill="white" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="513" y="170" text-anchor="middle" font-size="12" font-weight="700" fill="#374151">Customer SW-2</text>
+  <text x="513" y="188" text-anchor="middle" font-size="11" fill="var(--text3)">MLAG Active</text>
+  <line x1="340" y1="174" x2="422" y2="174" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="381" y="168" text-anchor="middle" font-size="10" fill="#9ca3af">ISL</text>
+  <!-- VAST Leaf pair -->
+  <rect x="158" y="270" width="182" height="60" rx="8" fill="white" stroke="#f97316" stroke-width="2"/>
+  <text x="249" y="296" text-anchor="middle" font-size="12" font-weight="700" fill="#ea580c">VAST Leaf-1</text>
+  <text x="249" y="314" text-anchor="middle" font-size="11" fill="var(--text3)">MLAG Active</text>
+  <rect x="422" y="270" width="182" height="60" rx="8" fill="white" stroke="#f97316" stroke-width="2"/>
+  <text x="513" y="296" text-anchor="middle" font-size="12" font-weight="700" fill="#ea580c">VAST Leaf-2</text>
+  <text x="513" y="314" text-anchor="middle" font-size="11" fill="var(--text3)">MLAG Active</text>
+  <line x1="340" y1="300" x2="422" y2="300" stroke="#f97316" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="381" y="294" text-anchor="middle" font-size="10" fill="#f97316">ISL</text>
+  <!-- VAST Server -->
+  <rect x="160" y="448" width="440" height="96" rx="8" fill="var(--bg2)" stroke="var(--border)" stroke-width="1.5"/>
+  <text x="380" y="472" text-anchor="middle" font-size="12" font-weight="600" fill="var(--text)">VAST Server (CBox / EBox)</text>
+  <rect x="198" y="482" width="364" height="46" rx="6" fill="#FFF7ED" stroke="#f97316" stroke-width="2"/>
+  <text x="380" y="500" text-anchor="middle" font-size="12" font-weight="600" fill="#f97316">Backend NIC</text>
+  <text x="380" y="519" text-anchor="middle" font-size="11" fill="#9a3412">VIPs (via SR-IOV VF) + Cluster Mesh</text>
+  <!-- Clients → Customer switches (symmetric V from center) -->
+  <line x1="380" y1="82" x2="249" y2="144" stroke="#3b82f6" stroke-width="2" marker-end="url(#as-blue)"/>
+  <line x1="380" y1="82" x2="513" y2="144" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#as-blue)"/>
+  <text x="380" y="118" text-anchor="middle" font-size="11" fill="#3b82f6">Client VIPs</text>
+  <!-- Customer switches → VAST Leaf pair (uplinks, cross-connected) -->
+  <line x1="249" y1="204" x2="249" y2="270" stroke="#6b7280" stroke-width="1.5" marker-end="url(#as-gray)"/>
+  <line x1="249" y1="204" x2="510" y2="270" stroke="#6b7280" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#as-gray)"/>
+  <line x1="513" y1="204" x2="513" y2="270" stroke="#6b7280" stroke-width="1.5" marker-end="url(#as-gray)"/>
+  <line x1="513" y1="204" x2="252" y2="270" stroke="#6b7280" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#as-gray)"/>
+  <text x="130" y="240" text-anchor="middle" font-size="10" fill="#6b7280">uplinks</text>
+  <!-- Backend NIC → VAST Leaf pair -->
+  <line x1="249" y1="482" x2="249" y2="330" stroke="#7c3aed" stroke-width="2" marker-end="url(#as-purple)"/>
+  <line x1="513" y1="482" x2="513" y2="330" stroke="#7c3aed" stroke-width="2" marker-end="url(#as-purple)"/>
+  <text x="381" y="418" text-anchor="middle" font-size="11" fill="#7c3aed">All traffic (VIPs + Mesh)</text>
+  <!-- SR-IOV callout -->
+  <rect x="624" y="448" width="164" height="96" rx="8" fill="#F5F3FF" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="706" y="474" text-anchor="middle" font-size="12" font-weight="700" fill="#7c3aed">SR-IOV</text>
+  <text x="706" y="492" text-anchor="middle" font-size="11" fill="#6d28d9">PF &#8594; Cluster mesh</text>
+  <text x="706" y="510" text-anchor="middle" font-size="11" fill="#6d28d9">VF &#8594; Client VIPs</text>
+  <text x="706" y="528" text-anchor="middle" font-size="10" fill="#6b7280">traffic separation</text>
+  <!-- Top callout -->
+  <rect x="642" y="22" width="146" height="142" rx="8" fill="#FFF7ED" stroke="#fed7aa" stroke-width="1.5"/>
+  <text x="715" y="50" text-anchor="middle" font-size="12" font-weight="700" fill="#c2410c">Single NIC</text>
+  <text x="715" y="70" text-anchor="middle" font-size="11" fill="#c2410c">&#8594; VAST leaf pair</text>
+  <text x="715" y="94" text-anchor="middle" font-size="10" fill="#6b7280">Clients via customer</text>
+  <text x="715" y="110" text-anchor="middle" font-size="10" fill="#6b7280">switches (uplink)</text>
+  <text x="715" y="128" text-anchor="middle" font-size="10" fill="#6b7280">SR-IOV separates</text>
+  <text x="715" y="144" text-anchor="middle" font-size="10" fill="#6b7280">VIP from mesh traffic</text>
+  </svg>`;
+}
+function svgSplit(){
+  return `<svg viewBox="0 0 760 494" width="100%" style="display:block;font-family:inherit">
+  <defs>
+    <marker id="sp-blue" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#2563eb"/></marker>
+    <marker id="sp-orange" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#f97316"/></marker>
+  </defs>
+  <!-- Customer Domain box — centered, sized to content -->
+  <rect x="80" y="10" width="600" height="206" rx="10" fill="#EFF6FF" stroke="#2563eb" stroke-width="1.5" opacity="0.8"/>
+  <text x="380" y="32" text-anchor="middle" font-size="12" font-weight="600" fill="#1d4ed8">Customer Domain  —  VIP traffic</text>
+  <!-- VAST Backend Domain box — centered, sized to content -->
+  <rect x="80" y="336" width="600" height="140" rx="10" fill="#FFF7ED" stroke="#f97316" stroke-width="1.5" opacity="0.8"/>
+  <text x="380" y="358" text-anchor="middle" font-size="12" font-weight="600" fill="#ea580c">VAST Backend Domain  —  Cluster Mesh</text>
+  <!-- Client Servers — centered at x=380 -->
+  <rect x="305" y="46" width="150" height="58" rx="8" fill="white" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="380" y="70" text-anchor="middle" font-size="12" font-weight="600" fill="#1d4ed8">Client Servers</text>
+  <text x="380" y="88" text-anchor="middle" font-size="11" fill="var(--text3)">NFS / SMB / S3</text>
+  <!-- Customer switches — centers at x=260 and x=500 -->
+  <rect x="170" y="130" width="180" height="58" rx="8" fill="white" stroke="#2563eb" stroke-width="2"/>
+  <text x="260" y="156" text-anchor="middle" font-size="12" font-weight="700" fill="#2563eb">Customer SW-1</text>
+  <text x="260" y="174" text-anchor="middle" font-size="11" fill="var(--text3)">MLAG Active</text>
+  <rect x="410" y="130" width="180" height="58" rx="8" fill="white" stroke="#2563eb" stroke-width="2"/>
+  <text x="500" y="156" text-anchor="middle" font-size="12" font-weight="700" fill="#2563eb">Customer SW-2</text>
+  <text x="500" y="174" text-anchor="middle" font-size="11" fill="var(--text3)">MLAG Active</text>
+  <line x1="350" y1="159" x2="410" y2="159" stroke="#2563eb" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="380" y="153" text-anchor="middle" font-size="10" fill="#2563eb">ISL</text>
+  <!-- VAST Server — centered between domains -->
+  <rect x="160" y="228" width="440" height="92" rx="8" fill="var(--bg2)" stroke="var(--border)" stroke-width="1.5"/>
+  <text x="380" y="250" text-anchor="middle" font-size="12" font-weight="600" fill="var(--text)">VAST Server (CBox / EBox)</text>
+  <rect x="175" y="258" width="170" height="42" rx="6" fill="#EFF6FF" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="260" y="284" text-anchor="middle" font-size="12" font-weight="600" fill="#2563eb">Frontend NIC</text>
+  <rect x="415" y="258" width="170" height="42" rx="6" fill="#FFF7ED" stroke="#f97316" stroke-width="1.5"/>
+  <text x="500" y="284" text-anchor="middle" font-size="12" font-weight="600" fill="#f97316">Backend NIC</text>
+  <!-- VAST Leaf pair — centers at x=260 and x=500 -->
+  <rect x="170" y="370" width="180" height="58" rx="8" fill="white" stroke="#f97316" stroke-width="2"/>
+  <text x="260" y="396" text-anchor="middle" font-size="12" font-weight="700" fill="#f97316">VAST Leaf-1</text>
+  <text x="260" y="414" text-anchor="middle" font-size="11" fill="var(--text3)">MLAG Active</text>
+  <rect x="410" y="370" width="180" height="58" rx="8" fill="white" stroke="#f97316" stroke-width="2"/>
+  <text x="500" y="396" text-anchor="middle" font-size="12" font-weight="700" fill="#f97316">VAST Leaf-2</text>
+  <text x="500" y="414" text-anchor="middle" font-size="11" fill="var(--text3)">MLAG Active</text>
+  <line x1="350" y1="399" x2="410" y2="399" stroke="#f97316" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="380" y="393" text-anchor="middle" font-size="10" fill="#f97316">ISL</text>
+  <!-- Clients → Customer switches (symmetric diagonals) -->
+  <line x1="355" y1="104" x2="293" y2="130" stroke="#2563eb" stroke-width="2" marker-end="url(#sp-blue)"/>
+  <line x1="405" y1="104" x2="467" y2="130" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#sp-blue)"/>
+  <text x="380" y="121" text-anchor="middle" font-size="11" fill="#2563eb">Client VIPs</text>
+  <!-- Frontend NIC → Customer switches — vertical primary, then cross dashed -->
+  <line x1="260" y1="258" x2="260" y2="188" stroke="#2563eb" stroke-width="2" marker-end="url(#sp-blue)"/>
+  <line x1="300" y1="258" x2="490" y2="188" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#sp-blue)"/>
+  <text x="196" y="218" text-anchor="middle" font-size="11" fill="#2563eb">VIP traffic</text>
+  <!-- Backend NIC → VAST Leaf pair — vertical primary, then cross dashed -->
+  <line x1="500" y1="300" x2="500" y2="370" stroke="#f97316" stroke-width="2" marker-end="url(#sp-orange)"/>
+  <line x1="458" y1="300" x2="278" y2="370" stroke="#f97316" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#sp-orange)"/>
+  <text x="564" y="330" text-anchor="middle" font-size="11" fill="#f97316">Cluster mesh</text>
+  <!-- Footer -->
+  <text x="380" y="483" text-anchor="middle" font-size="11" fill="var(--text3)">Separate switching domains &#8212; independent failure, dedicated bandwidth per traffic type</text>
+  </svg>`;
+}
+/* ===== Slide Mode ===== */
+const slideData=[
+  {title:'VAST Data — Network Training',type:'title',build(){
+    return `<div style="text-align:center;padding:60px 0">
+      <img src="vast_logo.png" alt="VAST Data" style="height:56px;margin-bottom:24px">
+      <h2 style="font-size:38px;color:#1E3A5F;margin-bottom:8px">Network Training</h2>
+      <p style="font-size:16px;color:#5F5E5A;margin-bottom:32px">Node Networking &middot; Network Design &middot; L2/L3 Topologies</p>
+      <p style="font-size:13px;color:#8A8985;font-style:italic">Created by Wong Tran</p>
+    </div>`;
+  }},
+  {title:'Agenda',build(){
+    const items=[
+      {n:'01',t:'CNode Networking',d:'Front end & backend interfaces, SR-IOV, bond configuration, VLAN 69, client VIPs'},
+      {n:'02',t:'EBox Networking',d:'Identical architecture to CNode — expansion box for additional storage'},
+      {n:'03',t:'DNode Networking',d:'Backend-only interfaces, no front end NIC, BlueField DPU management'},
+      {n:'04',t:'Converged vs Split',d:'How VAST node NICs connect to the switching fabric'},
+      {n:'05',t:'L2/L3 Topologies',d:'Small (pair), Medium (spine-leaf), Large (EVPN-BGP) deployment patterns'},
+    ];
+    return `<h2>Agenda</h2>`+items.map(i=>`
+      <div style="display:flex;gap:16px;align-items:flex-start;padding:14px 0;border-bottom:1px solid #eee">
+        <div style="width:40px;height:40px;background:#0D9488;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px;flex-shrink:0">${i.n}</div>
+        <div><div style="font-weight:600;font-size:15px;color:#1E3A5F">${i.t}</div><div style="font-size:12px;color:#5F5E5A;margin-top:2px">${i.d}</div></div>
+      </div>`).join('');
+  }},
+  {title:'CNode Networking',type:'section',build(){
+    return `<div style="text-align:center;padding:40px 0">
+      <div style="font-size:14px;font-weight:700;color:#0D9488;margin-bottom:8px">SECTION 01</div>
+      <h2 style="font-size:32px;margin-bottom:12px">CNode Networking</h2>
+      <p style="font-size:14px;color:#5F5E5A">Front end & backend interfaces, SR-IOV virtual functions,<br>bond configuration, VLAN 69 sub-interfaces, and client VIPs</p>
+    </div>`;
+  }},
+  {title:'CNode — Interface Overview',build(){
+    const page=document.getElementById('page-node');
+    const header=page.querySelector('.page-header');
+    const cfg=document.getElementById('cn-config-gigabit');
+    const sp=cfg?cfg.querySelector('.server-panel'):'';
+    return (header?header.outerHTML:'<h2>CNode Networking</h2>')+(sp?sp.outerHTML:'');
+  }},
+  {title:'CNode — Interface Map',build(){
+    const p=document.getElementById('cn-diagram');
+    return `<h2>CNode — Interface Map</h2><p class="page-sub">se-az-arrow-cb4-cn-2 — Dual NIC + Mgmt via Gigabit</p>`+(p?p.innerHTML:'');
+  }},
+  {title:'CNode — lshw Output',build(){
+    const p=document.getElementById('cn-lshw');
+    return `<h2>CNode — Hardware Discovery</h2><p class="page-sub">lshw -c network -businfo</p>`+(p?p.innerHTML:'');
+  }},
+  {title:'CNode — ip -br addr',build(){
+    const p=document.getElementById('cn-ipbr');
+    return `<h2>CNode — IP Addresses</h2><p class="page-sub">ip -br addr output</p>`+(p?p.innerHTML:'');
+  }},
+  {title:'CNode — VIP Breakdown',build(){
+    const p=document.getElementById('cn-vips');
+    return `<h2>CNode — VIP Breakdown</h2><p class="page-sub">Client VIP distribution across front-end ports</p>`+(p?p.innerHTML:'');
+  }},
+  {title:'CNode — Bond Status',build(){
+    const p=document.getElementById('cn-bond');
+    return `<h2>CNode — Bond Status</h2><p class="page-sub">Active-backup bond configuration</p>`+(p?p.innerHTML:'');
+  }},
+  {title:'DNode Networking',type:'section',build(){
+    return `<div style="text-align:center;padding:40px 0">
+      <div style="font-size:14px;font-weight:700;color:#0D9488;margin-bottom:8px">SECTION 03</div>
+      <h2 style="font-size:32px;margin-bottom:12px">DNode Networking</h2>
+      <p style="font-size:14px;color:#5F5E5A">Backend-only interfaces — no front end NIC<br>BlueField DPU management via tmfifo_net0</p>
+    </div>`;
+  }},
+  {title:'DNode — Interface Map',build(){
+    const pageEl=document.getElementById('page-dnode');
+    if(!pageEl)return '<h2>DNode Networking</h2>';
+    const header=pageEl.querySelector('.page-header');
+    const sp=pageEl.querySelector('.server-panel');
+    return (header?header.outerHTML:'<h2>DNode Networking</h2>')+(sp?sp.outerHTML:'');
+  }},
+  {title:'Converged vs Split',type:'section',build(){
+    return `<div style="text-align:center;padding:40px 0">
+      <div style="font-size:14px;font-weight:700;color:#0D9488;margin-bottom:8px">SECTION 04</div>
+      <h2 style="font-size:32px;margin-bottom:12px">Converged vs Split</h2>
+      <p style="font-size:14px;color:#5F5E5A">How VAST node NICs connect to the switching fabric —<br>the foundation of your network design</p>
+    </div>`;
+  }},
+  {title:'Network Design Options',build(){
+    const page=document.getElementById('page-netdesign');
+    const cards=page?page.children[1]:null;
+    return `<h2>Network Design Options</h2><p class="page-sub">Select a network design to explore</p>`+(cards?cards.outerHTML:'');
+  }},
+  {title:'Converged Dual NIC',build(){
+    return `<h2>Converged — Dual NIC</h2><p class="page-sub" style="color:#dc2626">⚠ Cisco EBox Only — Both NICs connect to the same VAST leaf pair</p>`+svgConvergedDual();
+  }},
+  {title:'Converged Single NIC',build(){
+    return `<h2>Converged — Single NIC</h2><p class="page-sub">Backend NIC only — SR-IOV separates VIP from mesh traffic</p>`+svgConvergedSingle();
+  }},
+  {title:'Split Topology',build(){
+    return `<h2>Split — Separate Domains</h2><p class="page-sub">Independent switching domains for VIP traffic and cluster mesh</p>`+svgSplit();
+  }},
+  {title:'L2/L3 Topologies',type:'section',build(){
+    return `<div style="text-align:center;padding:40px 0">
+      <div style="font-size:14px;font-weight:700;color:#0D9488;margin-bottom:8px">SECTION 05</div>
+      <h2 style="font-size:32px;margin-bottom:12px">L2 / L3 Topologies</h2>
+      <p style="font-size:14px;color:#5F5E5A">Standard VAST Data fabric patterns —<br>Small (pair), Medium (spine-leaf), Large (EVPN-BGP)</p>
+    </div>`;
+  }},
+  {title:'Topology Sizes',build(){
+    const cards=document.getElementById('topo-size-cards');
+    return `<h2>Deployment Sizes</h2><p class="page-sub">Select a deployment size to explore</p>`+(cards?cards.outerHTML:'');
+  }},
+  {title:'Topology Diagram',build(){
+    // Render the current topo SVG into a temp container
+    const tmp=document.createElement('div');
+    drawFns[topoActive](tmp);
+    const descEl=document.getElementById('topo-desc');
+    const legEl=document.getElementById('topo-legend');
+    const sizeNames=['Spine-Leaf Isolated','Spine-Leaf Connected','Pair Isolated','Pair Connected','L3 EVPN-BGP Isolated','L3 EVPN-BGP Connected'];
+    return `<h2>Topology: ${sizeNames[topoActive]||''}</h2>`
+      +(descEl?'<div style="margin-bottom:12px">'+descEl.innerHTML+'</div>':'')
+      +tmp.innerHTML
+      +(legEl?'<div style="margin-top:12px">'+legEl.outerHTML+'</div>':'');
+  }},
+  {title:'Thank You',type:'title',build(){
+    return `<div style="text-align:center;padding:60px 0">
+      <img src="vast_logo.png" alt="VAST Data" style="height:48px;margin-bottom:20px">
+      <h2 style="font-size:32px;color:#1E3A5F;margin-bottom:8px">Thank You</h2>
+      <p style="font-size:15px;color:#5F5E5A;margin-bottom:6px">VAST Data — Network Training</p>
+      <p style="font-size:13px;color:#8A8985;font-style:italic">Created by Wong Tran</p>
+    </div>`;
+  }},
+];
+
+let slideIdx=0,slideModeActive=false;
+
+function enterSlideMode(){
+  slideModeActive=true;
+  slideIdx=0;
+  document.getElementById('slide-overlay').classList.add('active');
+  document.body.style.overflow='hidden';
+  buildSlideDots();
+  renderSlide();
+}
+function exitSlideMode(){
+  slideModeActive=false;
+  document.getElementById('slide-overlay').classList.remove('active');
+  document.body.style.overflow='';
+}
+function slideNav(dir){
+  slideIdx=Math.max(0,Math.min(slideData.length-1,slideIdx+dir));
+  renderSlide();
+}
+function slideGoTo(i){slideIdx=i;renderSlide()}
+
+function renderSlide(){
+  const s=slideData[slideIdx];
+  const card=document.getElementById('slide-card');
+  card.innerHTML=s.build();
+  card.scrollTop=0;
+  // Animate
+  card.style.animation='none';
+  card.offsetHeight;
+  card.style.animation='slideIn .35s ease';
+  // Counter
+  document.getElementById('slide-counter').textContent=(slideIdx+1)+' / '+slideData.length;
+  // Buttons
+  document.getElementById('slide-prev').disabled=slideIdx===0;
+  document.getElementById('slide-next').disabled=slideIdx===slideData.length-1;
+  // Progress
+  document.getElementById('slide-progress').style.width=((slideIdx+1)/slideData.length*100)+'%';
+  // Dots
+  document.querySelectorAll('.slide-dot').forEach((d,i)=>{
+    d.classList.toggle('active',i===slideIdx);
+  });
+}
+
+function buildSlideDots(){
+  const wrap=document.getElementById('slide-dots');
+  wrap.innerHTML='';
+  slideData.forEach((_,i)=>{
+    const dot=document.createElement('button');
+    dot.className='slide-dot'+(i===0?' active':'');
+    dot.title=slideData[i].title;
+    dot.onclick=()=>slideGoTo(i);
+    wrap.appendChild(dot);
+  });
+}
+
+document.addEventListener('keydown',e=>{
+  if(!slideModeActive)return;
+  if(e.key==='Escape')exitSlideMode();
+  else if(e.key==='ArrowRight'||e.key===' ')slideNav(1);
+  else if(e.key==='ArrowLeft')slideNav(-1);
+  else if(e.key==='Home'){slideIdx=0;renderSlide()}
+  else if(e.key==='End'){slideIdx=slideData.length-1;renderSlide()}
+});
+
 </script>
 </body>
 </html>
