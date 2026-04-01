@@ -331,6 +331,10 @@ line.link-dead{stroke:#dc2626!important;stroke-dasharray:4 3!important;opacity:.
     <a class="nav-link" onclick="switchPage('dnode',this)">
       <span class="nav-icon">&#x25A4;</span>DNode
     </a>
+    <div style="font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;padding:12px 12px 2px">IPMI</div>
+    <a class="nav-link" onclick="switchPage('ipmi',this)">
+      <span class="nav-icon">&#x2699;</span>B2B &amp; Mgmt Switch
+    </a>
     <div style="font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;padding:12px 12px 2px">Network Design</div>
     <a class="nav-link" onclick="switchPage('netdesign',this)">
       <span class="nav-icon">&#x25D1;</span>Converged vs Split
@@ -408,30 +412,39 @@ line.link-dead{stroke:#dc2626!important;stroke-dasharray:4 3!important;opacity:.
   <rect x="1" y="1" width="678" height="108" rx="8" fill="#F1EFE8" stroke="#d3d1c7" stroke-width="1"/>
   <text x="340" y="14" text-anchor="middle" font-size="8" fill="#c2c0b6" font-family="sans-serif">CBox — 1U</text>
 
-  <!-- FRONT END NIC (center) — clickable -->
-  <g class="port-group" id="pg-frontend" onclick="highlightPort('frontend')">
-    <rect class="port-highlight" x="78" y="18" width="260" height="44" rx="6" fill="#185FA5" opacity="0"/>
-    <rect x="82" y="21" width="252" height="38" rx="6" fill="#E6F1FB" stroke="#85B7EB" stroke-width="1"/>
-    <text x="208" y="35" text-anchor="middle" font-size="9" fill="#0C447C" font-weight="600" font-family="sans-serif">Front End Interface</text>
-    <rect x="94" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#85B7EB" stroke-width=".8"/>
-    <text x="148" y="51" text-anchor="middle" font-size="8" fill="#185FA5" font-family="sans-serif">enp65s0f0</text>
-    <rect x="210" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#85B7EB" stroke-width=".8"/>
-    <text x="264" y="51" text-anchor="middle" font-size="8" fill="#185FA5" font-family="sans-serif">enp65s0f1</text>
-    <rect class="port-label-tag" x="138" y="57" width="140" height="10" rx="3" fill="#185FA5" opacity="0"/>
-    <text class="port-label-tag" x="208" y="65" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="600" font-family="sans-serif" opacity="0">Data plane — client VIPs</text>
+  <!-- BMC -->
+  <g class="port-group" id="pg-bmc" onclick="highlightPort('bmc')">
+    <rect class="port-highlight" x="78" y="18" width="88" height="44" rx="6" fill="#D97706" opacity="0"/>
+    <rect x="82" y="21" width="80" height="38" rx="6" fill="#FEF3C7" stroke="#D97706" stroke-width="1"/>
+    <text x="122" y="35" text-anchor="middle" font-size="9" fill="#92400E" font-weight="600" font-family="sans-serif">BMC</text>
+    <rect x="86" y="41" width="72" height="14" rx="3" fill="#fff" stroke="#D97706" stroke-width=".8"/>
+    <text x="122" y="51" text-anchor="middle" font-size="5.5" fill="#92400E" font-family="sans-serif">enp12s0f4u1u1</text>
   </g>
 
-  <!-- BACKEND NIC (right, same width) — clickable -->
+  <!-- FRONT END NIC — clickable -->
+  <g class="port-group" id="pg-frontend" onclick="highlightPort('frontend')">
+    <rect class="port-highlight" x="162" y="18" width="224" height="44" rx="6" fill="#185FA5" opacity="0"/>
+    <rect x="166" y="21" width="216" height="38" rx="6" fill="#E6F1FB" stroke="#85B7EB" stroke-width="1"/>
+    <text x="274" y="35" text-anchor="middle" font-size="9" fill="#0C447C" font-weight="600" font-family="sans-serif">Front End Interface</text>
+    <rect x="178" y="41" width="96" height="14" rx="3" fill="#fff" stroke="#85B7EB" stroke-width=".8"/>
+    <text x="226" y="51" text-anchor="middle" font-size="8" fill="#185FA5" font-family="sans-serif">enp65s0f0</text>
+    <rect x="282" y="41" width="96" height="14" rx="3" fill="#fff" stroke="#85B7EB" stroke-width=".8"/>
+    <text x="330" y="51" text-anchor="middle" font-size="8" fill="#185FA5" font-family="sans-serif">enp65s0f1</text>
+    <rect class="port-label-tag" x="204" y="57" width="140" height="10" rx="3" fill="#185FA5" opacity="0"/>
+    <text class="port-label-tag" x="274" y="65" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="600" font-family="sans-serif" opacity="0">Data plane — client VIPs</text>
+  </g>
+
+  <!-- BACKEND NIC — clickable -->
   <g class="port-group" id="pg-backend" onclick="highlightPort('backend')">
-    <rect class="port-highlight" x="346" y="18" width="260" height="44" rx="6" fill="#0F6E56" opacity="0"/>
-    <rect x="350" y="21" width="252" height="38" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
-    <text x="476" y="35" text-anchor="middle" font-size="9" fill="#085041" font-weight="600" font-family="sans-serif">Backend Interface</text>
-    <rect x="362" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#0F6E56" stroke-width=".8"/>
-    <text x="416" y="51" text-anchor="middle" font-size="8" fill="#0F6E56" font-family="sans-serif">enp1s0f0</text>
-    <rect x="478" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#0F6E56" stroke-width=".8"/>
-    <text x="532" y="51" text-anchor="middle" font-size="8" fill="#0F6E56" font-family="sans-serif">enp1s0f1</text>
-    <rect class="port-label-tag" x="406" y="57" width="140" height="10" rx="3" fill="#0F6E56" opacity="0"/>
-    <text class="port-label-tag" x="476" y="65" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="600" font-family="sans-serif" opacity="0">Cluster mesh — SR-IOV + bond</text>
+    <rect class="port-highlight" x="382" y="18" width="224" height="44" rx="6" fill="#0F6E56" opacity="0"/>
+    <rect x="386" y="21" width="216" height="38" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+    <text x="494" y="35" text-anchor="middle" font-size="9" fill="#085041" font-weight="600" font-family="sans-serif">Backend Interface</text>
+    <rect x="398" y="41" width="96" height="14" rx="3" fill="#fff" stroke="#0F6E56" stroke-width=".8"/>
+    <text x="446" y="51" text-anchor="middle" font-size="8" fill="#0F6E56" font-family="sans-serif">enp1s0f0</text>
+    <rect x="502" y="41" width="96" height="14" rx="3" fill="#fff" stroke="#0F6E56" stroke-width=".8"/>
+    <text x="550" y="51" text-anchor="middle" font-size="8" fill="#0F6E56" font-family="sans-serif">enp1s0f1</text>
+    <rect class="port-label-tag" x="424" y="57" width="140" height="10" rx="3" fill="#0F6E56" opacity="0"/>
+    <text class="port-label-tag" x="494" y="65" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="600" font-family="sans-serif" opacity="0">Cluster mesh — SR-IOV + bond</text>
   </g>
 
   <!-- GIGABIT PORTS (bottom, spanning center to right) — clickable -->
@@ -699,24 +712,32 @@ Slave queue ID: 0
   <rect x="1" y="1" width="678" height="108" rx="8" fill="#F1EFE8" stroke="#d3d1c7" stroke-width="1"/>
   <text x="340" y="14" text-anchor="middle" font-size="8" fill="#c2c0b6" font-family="sans-serif">CBox — 1U (mgmt via bond)</text>
 
+  <!-- BMC -->
+  <g class="port-group">
+    <rect x="82" y="21" width="80" height="38" rx="6" fill="#FEF3C7" stroke="#D97706" stroke-width="1"/>
+    <text x="122" y="35" text-anchor="middle" font-size="9" fill="#92400E" font-weight="600" font-family="sans-serif">BMC</text>
+    <rect x="86" y="41" width="72" height="14" rx="3" fill="#fff" stroke="#D97706" stroke-width=".8"/>
+    <text x="122" y="51" text-anchor="middle" font-size="5.5" fill="#92400E" font-family="sans-serif">enp12s0f4u1u1</text>
+  </g>
+
   <!-- FRONT END NIC -->
   <g class="port-group">
-    <rect x="82" y="21" width="252" height="38" rx="6" fill="#E6F1FB" stroke="#85B7EB" stroke-width="1"/>
-    <text x="208" y="35" text-anchor="middle" font-size="9" fill="#0C447C" font-weight="600" font-family="sans-serif">Front End Interface</text>
-    <rect x="94" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#85B7EB" stroke-width=".8"/>
-    <text x="148" y="51" text-anchor="middle" font-size="8" fill="#185FA5" font-family="sans-serif">enp65s0f0</text>
-    <rect x="210" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#85B7EB" stroke-width=".8"/>
-    <text x="264" y="51" text-anchor="middle" font-size="8" fill="#185FA5" font-family="sans-serif">enp65s0f1</text>
+    <rect x="166" y="21" width="216" height="38" rx="6" fill="#E6F1FB" stroke="#85B7EB" stroke-width="1"/>
+    <text x="274" y="35" text-anchor="middle" font-size="9" fill="#0C447C" font-weight="600" font-family="sans-serif">Front End Interface</text>
+    <rect x="178" y="41" width="96" height="14" rx="3" fill="#fff" stroke="#85B7EB" stroke-width=".8"/>
+    <text x="226" y="51" text-anchor="middle" font-size="8" fill="#185FA5" font-family="sans-serif">enp65s0f0</text>
+    <rect x="282" y="41" width="96" height="14" rx="3" fill="#fff" stroke="#85B7EB" stroke-width=".8"/>
+    <text x="330" y="51" text-anchor="middle" font-size="8" fill="#185FA5" font-family="sans-serif">enp65s0f1</text>
   </g>
 
   <!-- BACKEND NIC (mgmt on bond0) -->
   <g class="port-group">
-    <rect x="350" y="21" width="252" height="38" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
-    <text x="476" y="35" text-anchor="middle" font-size="9" fill="#085041" font-weight="600" font-family="sans-serif">Backend Interface</text>
-    <rect x="362" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#0F6E56" stroke-width=".8"/>
-    <text x="416" y="51" text-anchor="middle" font-size="8" fill="#0F6E56" font-family="sans-serif">enp1s0f0</text>
-    <rect x="478" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#0F6E56" stroke-width=".8"/>
-    <text x="532" y="51" text-anchor="middle" font-size="8" fill="#0F6E56" font-family="sans-serif">enp1s0f1</text>
+    <rect x="386" y="21" width="216" height="38" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+    <text x="494" y="35" text-anchor="middle" font-size="9" fill="#085041" font-weight="600" font-family="sans-serif">Backend Interface</text>
+    <rect x="398" y="41" width="96" height="14" rx="3" fill="#fff" stroke="#0F6E56" stroke-width=".8"/>
+    <text x="446" y="51" text-anchor="middle" font-size="8" fill="#0F6E56" font-family="sans-serif">enp1s0f0</text>
+    <rect x="502" y="41" width="96" height="14" rx="3" fill="#fff" stroke="#0F6E56" stroke-width=".8"/>
+    <text x="550" y="51" text-anchor="middle" font-size="8" fill="#0F6E56" font-family="sans-serif">enp1s0f1</text>
   </g>
 
   <!-- GIGABIT PORTS -->
@@ -948,6 +969,15 @@ Slave queue ID: 0
   <!-- 1U Chassis -->
   <rect x="1" y="1" width="678" height="108" rx="8" fill="#F1EFE8" stroke="#d3d1c7" stroke-width="1"/>
   <text x="340" y="14" text-anchor="middle" font-size="8" fill="#c2c0b6" font-family="sans-serif">CBox — 1U (Single NIC)</text>
+
+  <!-- BMC -->
+  <g class="port-group" id="pg-sn-bmc">
+    <rect x="78" y="18" width="88" height="44" rx="6" fill="#D97706" opacity="0"/>
+    <rect x="82" y="21" width="80" height="38" rx="6" fill="#FEF3C7" stroke="#D97706" stroke-width="1"/>
+    <text x="122" y="35" text-anchor="middle" font-size="9" fill="#92400E" font-weight="600" font-family="sans-serif">BMC</text>
+    <rect x="86" y="41" width="72" height="14" rx="3" fill="#fff" stroke="#D97706" stroke-width=".8"/>
+    <text x="122" y="51" text-anchor="middle" font-size="5.5" fill="#92400E" font-family="sans-serif">enp12s0f4u1u1</text>
+  </g>
 
   <!-- BACKEND NIC (same size/position as dual-NIC backend) -->
   <g class="port-group" id="pg-sn-backend">
@@ -1215,6 +1245,15 @@ Slave queue ID: 0
   <!-- 1U Chassis -->
   <rect x="1" y="1" width="678" height="108" rx="8" fill="#F1EFE8" stroke="#d3d1c7" stroke-width="1"/>
   <text x="340" y="14" text-anchor="middle" font-size="8" fill="#c2c0b6" font-family="sans-serif">CBox — 1U (Single NIC)</text>
+
+  <!-- BMC -->
+  <g class="port-group" id="pg-snb-bmc">
+    <rect x="78" y="18" width="88" height="44" rx="6" fill="#D97706" opacity="0"/>
+    <rect x="82" y="21" width="80" height="38" rx="6" fill="#FEF3C7" stroke="#D97706" stroke-width="1"/>
+    <text x="122" y="35" text-anchor="middle" font-size="9" fill="#92400E" font-weight="600" font-family="sans-serif">BMC</text>
+    <rect x="86" y="41" width="72" height="14" rx="3" fill="#fff" stroke="#D97706" stroke-width=".8"/>
+    <text x="122" y="51" text-anchor="middle" font-size="5.5" fill="#92400E" font-family="sans-serif">enp12s0f4u1u1</text>
+  </g>
 
   <!-- BACKEND NIC (same size/position as dual-NIC backend) -->
   <g class="port-group" id="pg-snb-backend">
@@ -1511,30 +1550,37 @@ Slave queue ID: 0
   <rect x="1" y="1" width="678" height="108" rx="8" fill="#F1EFE8" stroke="#d3d1c7" stroke-width="1"/>
   <text x="340" y="14" text-anchor="middle" font-size="8" fill="#c2c0b6" font-family="sans-serif">EBox — 1U</text>
 
-  <!-- FRONT END NIC (center) — clickable -->
-  <g class="port-group" id="pg-eb-frontend" onclick="highlightEbPort('frontend')">
-    <rect class="port-highlight" x="78" y="18" width="260" height="44" rx="6" fill="#185FA5" opacity="0"/>
-    <rect x="82" y="21" width="252" height="38" rx="6" fill="#E6F1FB" stroke="#85B7EB" stroke-width="1"/>
-    <text x="208" y="35" text-anchor="middle" font-size="9" fill="#0C447C" font-weight="600" font-family="sans-serif">Front End Interface</text>
-    <rect x="94" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#85B7EB" stroke-width=".8"/>
-    <text x="148" y="51" text-anchor="middle" font-size="8" fill="#185FA5" font-family="sans-serif">enp65s0f0</text>
-    <rect x="210" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#85B7EB" stroke-width=".8"/>
-    <text x="264" y="51" text-anchor="middle" font-size="8" fill="#185FA5" font-family="sans-serif">enp65s0f1</text>
-    <rect class="port-label-tag" x="138" y="57" width="140" height="10" rx="3" fill="#185FA5" opacity="0"/>
-    <text class="port-label-tag" x="208" y="65" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="600" font-family="sans-serif" opacity="0">Data plane — client VIPs</text>
+  <!-- BMC -->
+  <g class="port-group" id="pg-eb-bmc" onclick="highlightEbPort('bmc')">
+    <rect class="port-highlight" x="78" y="18" width="88" height="44" rx="6" fill="#D97706" opacity="0"/>
+    <rect x="82" y="21" width="80" height="38" rx="6" fill="#FEF3C7" stroke="#D97706" stroke-width="1"/>
+    <text x="122" y="35" text-anchor="middle" font-size="9" fill="#92400E" font-weight="600" font-family="sans-serif">BMC</text>
+    <rect x="86" y="41" width="72" height="14" rx="3" fill="#fff" stroke="#D97706" stroke-width=".8"/>
+    <text x="122" y="51" text-anchor="middle" font-size="5.5" fill="#92400E" font-family="sans-serif">enp12s0f4u1u1</text>
   </g>
 
-  <!-- BACKEND NIC (right, same width) — clickable -->
+  <!-- FRONT END NIC — clickable -->
+  <g class="port-group" id="pg-eb-frontend" onclick="highlightEbPort('frontend')">
+    <rect class="port-highlight" x="162" y="18" width="224" height="44" rx="6" fill="#185FA5" opacity="0"/>
+    <rect x="166" y="21" width="216" height="38" rx="6" fill="#E6F1FB" stroke="#85B7EB" stroke-width="1"/>
+    <text x="274" y="35" text-anchor="middle" font-size="9" fill="#0C447C" font-weight="600" font-family="sans-serif">Front End Interface</text>
+    <rect x="178" y="41" width="96" height="14" rx="3" fill="#fff" stroke="#85B7EB" stroke-width=".8"/>
+    <text x="226" y="51" text-anchor="middle" font-size="8" fill="#185FA5" font-family="sans-serif">enp65s0f0</text>
+    <rect x="282" y="41" width="96" height="14" rx="3" fill="#fff" stroke="#85B7EB" stroke-width=".8"/>
+    <text x="330" y="51" text-anchor="middle" font-size="8" fill="#185FA5" font-family="sans-serif">enp65s0f1</text>
+    <rect class="port-label-tag" x="204" y="57" width="140" height="10" rx="3" fill="#185FA5" opacity="0"/>
+    <text class="port-label-tag" x="274" y="65" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="600" font-family="sans-serif" opacity="0">Data plane — client VIPs</text>
+  </g>
+
+  <!-- BACKEND NIC — clickable -->
   <g class="port-group" id="pg-eb-backend" onclick="highlightEbPort('backend')">
-    <rect class="port-highlight" x="346" y="18" width="260" height="44" rx="6" fill="#0F6E56" opacity="0"/>
-    <rect x="350" y="21" width="252" height="38" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
-    <text x="476" y="35" text-anchor="middle" font-size="9" fill="#085041" font-weight="600" font-family="sans-serif">Backend Interface</text>
-    <rect x="362" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#0F6E56" stroke-width=".8"/>
-    <text x="416" y="51" text-anchor="middle" font-size="8" fill="#0F6E56" font-family="sans-serif">enp1s0f0</text>
-    <rect x="478" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#0F6E56" stroke-width=".8"/>
-    <text x="532" y="51" text-anchor="middle" font-size="8" fill="#0F6E56" font-family="sans-serif">enp1s0f1</text>
-    <rect class="port-label-tag" x="406" y="57" width="140" height="10" rx="3" fill="#0F6E56" opacity="0"/>
-    <text class="port-label-tag" x="476" y="65" text-anchor="middle" font-size="6.5" fill="#fff" font-weight="600" font-family="sans-serif" opacity="0">Cluster mesh — SR-IOV + bond</text>
+    <rect class="port-highlight" x="382" y="18" width="224" height="44" rx="6" fill="#0F6E56" opacity="0"/>
+    <rect x="386" y="21" width="216" height="38" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+    <text x="494" y="35" text-anchor="middle" font-size="9" fill="#085041" font-weight="600" font-family="sans-serif">Backend Interface</text>
+    <rect x="398" y="41" width="96" height="14" rx="3" fill="#fff" stroke="#0F6E56" stroke-width=".8"/>
+    <text x="446" y="51" text-anchor="middle" font-size="8" fill="#0F6E56" font-family="sans-serif">enp1s0f0</text>
+    <rect x="502" y="41" width="96" height="14" rx="3" fill="#fff" stroke="#0F6E56" stroke-width=".8"/>
+    <text x="550" y="51" text-anchor="middle" font-size="8" fill="#0F6E56" font-family="sans-serif">enp1s0f1</text>
   </g>
 
   <!-- GIGABIT PORTS (bottom, spanning center to right) — clickable -->
@@ -1802,24 +1848,32 @@ Slave queue ID: 0
   <rect x="1" y="1" width="678" height="108" rx="8" fill="#F1EFE8" stroke="#d3d1c7" stroke-width="1"/>
   <text x="340" y="14" text-anchor="middle" font-size="8" fill="#c2c0b6" font-family="sans-serif">EBox — 1U (mgmt via bond)</text>
 
+  <!-- BMC -->
+  <g class="port-group">
+    <rect x="82" y="21" width="80" height="38" rx="6" fill="#FEF3C7" stroke="#D97706" stroke-width="1"/>
+    <text x="122" y="35" text-anchor="middle" font-size="9" fill="#92400E" font-weight="600" font-family="sans-serif">BMC</text>
+    <rect x="86" y="41" width="72" height="14" rx="3" fill="#fff" stroke="#D97706" stroke-width=".8"/>
+    <text x="122" y="51" text-anchor="middle" font-size="5.5" fill="#92400E" font-family="sans-serif">enp12s0f4u1u1</text>
+  </g>
+
   <!-- FRONT END NIC -->
   <g class="port-group">
-    <rect x="82" y="21" width="252" height="38" rx="6" fill="#E6F1FB" stroke="#85B7EB" stroke-width="1"/>
-    <text x="208" y="35" text-anchor="middle" font-size="9" fill="#0C447C" font-weight="600" font-family="sans-serif">Front End Interface</text>
-    <rect x="94" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#85B7EB" stroke-width=".8"/>
-    <text x="148" y="51" text-anchor="middle" font-size="8" fill="#185FA5" font-family="sans-serif">enp65s0f0</text>
-    <rect x="210" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#85B7EB" stroke-width=".8"/>
-    <text x="264" y="51" text-anchor="middle" font-size="8" fill="#185FA5" font-family="sans-serif">enp65s0f1</text>
+    <rect x="166" y="21" width="216" height="38" rx="6" fill="#E6F1FB" stroke="#85B7EB" stroke-width="1"/>
+    <text x="274" y="35" text-anchor="middle" font-size="9" fill="#0C447C" font-weight="600" font-family="sans-serif">Front End Interface</text>
+    <rect x="178" y="41" width="96" height="14" rx="3" fill="#fff" stroke="#85B7EB" stroke-width=".8"/>
+    <text x="226" y="51" text-anchor="middle" font-size="8" fill="#185FA5" font-family="sans-serif">enp65s0f0</text>
+    <rect x="282" y="41" width="96" height="14" rx="3" fill="#fff" stroke="#85B7EB" stroke-width=".8"/>
+    <text x="330" y="51" text-anchor="middle" font-size="8" fill="#185FA5" font-family="sans-serif">enp65s0f1</text>
   </g>
 
   <!-- BACKEND NIC -->
   <g class="port-group">
-    <rect x="350" y="21" width="252" height="38" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
-    <text x="476" y="35" text-anchor="middle" font-size="9" fill="#085041" font-weight="600" font-family="sans-serif">Backend Interface</text>
-    <rect x="362" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#0F6E56" stroke-width=".8"/>
-    <text x="416" y="51" text-anchor="middle" font-size="8" fill="#0F6E56" font-family="sans-serif">enp1s0f0</text>
-    <rect x="478" y="41" width="108" height="14" rx="3" fill="#fff" stroke="#0F6E56" stroke-width=".8"/>
-    <text x="532" y="51" text-anchor="middle" font-size="8" fill="#0F6E56" font-family="sans-serif">enp1s0f1</text>
+    <rect x="386" y="21" width="216" height="38" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+    <text x="494" y="35" text-anchor="middle" font-size="9" fill="#085041" font-weight="600" font-family="sans-serif">Backend Interface</text>
+    <rect x="398" y="41" width="96" height="14" rx="3" fill="#fff" stroke="#0F6E56" stroke-width=".8"/>
+    <text x="446" y="51" text-anchor="middle" font-size="8" fill="#0F6E56" font-family="sans-serif">enp1s0f0</text>
+    <rect x="502" y="41" width="96" height="14" rx="3" fill="#fff" stroke="#0F6E56" stroke-width=".8"/>
+    <text x="550" y="51" text-anchor="middle" font-size="8" fill="#0F6E56" font-family="sans-serif">enp1s0f1</text>
   </g>
 
   <!-- GIGABIT PORTS -->
@@ -2051,6 +2105,15 @@ Slave queue ID: 0
   <!-- 1U Chassis -->
   <rect x="1" y="1" width="678" height="108" rx="8" fill="#F1EFE8" stroke="#d3d1c7" stroke-width="1"/>
   <text x="340" y="14" text-anchor="middle" font-size="8" fill="#c2c0b6" font-family="sans-serif">EBox — 1U (Single NIC)</text>
+
+  <!-- BMC -->
+  <g class="port-group" id="pg-eb-sn-bmc">
+    <rect x="78" y="18" width="88" height="44" rx="6" fill="#D97706" opacity="0"/>
+    <rect x="82" y="21" width="80" height="38" rx="6" fill="#FEF3C7" stroke="#D97706" stroke-width="1"/>
+    <text x="122" y="35" text-anchor="middle" font-size="9" fill="#92400E" font-weight="600" font-family="sans-serif">BMC</text>
+    <rect x="86" y="41" width="72" height="14" rx="3" fill="#fff" stroke="#D97706" stroke-width=".8"/>
+    <text x="122" y="51" text-anchor="middle" font-size="5.5" fill="#92400E" font-family="sans-serif">enp12s0f4u1u1</text>
+  </g>
 
   <!-- BACKEND NIC (same size/position as dual-NIC backend) -->
   <g class="port-group" id="pg-eb-sn-backend">
@@ -2306,6 +2369,15 @@ Slave queue ID: 0
   <!-- 1U Chassis -->
   <rect x="1" y="1" width="678" height="108" rx="8" fill="#F1EFE8" stroke="#d3d1c7" stroke-width="1"/>
   <text x="340" y="14" text-anchor="middle" font-size="8" fill="#c2c0b6" font-family="sans-serif">EBox — 1U (Single NIC)</text>
+
+  <!-- BMC -->
+  <g class="port-group" id="pg-eb-snb-bmc">
+    <rect x="78" y="18" width="88" height="44" rx="6" fill="#D97706" opacity="0"/>
+    <rect x="82" y="21" width="80" height="38" rx="6" fill="#FEF3C7" stroke="#D97706" stroke-width="1"/>
+    <text x="122" y="35" text-anchor="middle" font-size="9" fill="#92400E" font-weight="600" font-family="sans-serif">BMC</text>
+    <rect x="86" y="41" width="72" height="14" rx="3" fill="#fff" stroke="#D97706" stroke-width=".8"/>
+    <text x="122" y="51" text-anchor="middle" font-size="5.5" fill="#92400E" font-family="sans-serif">enp12s0f4u1u1</text>
+  </g>
 
   <!-- BACKEND NIC (same size/position as dual-NIC backend) -->
   <g class="port-group" id="pg-eb-snb-backend">
@@ -2888,6 +2960,124 @@ Slave queue ID: 0
 </div><!-- end page-dnode -->
 
 <!-- =============================== -->
+<!-- PAGE: IPMI                        -->
+<!-- =============================== -->
+<div id="page-ipmi" class="page">
+
+<div class="page-header">
+  <h2>B2B IPMI</h2>
+  <p>Back-to-back IPMI daisy-chains each server's BMC port to the next server's GbE1, forming a loop for out-of-band management without a dedicated switch. Also covers management switch and SSH access topologies.</p>
+</div>
+
+<!-- IPMI Mode Toggle -->
+<div class="tabs" style="margin-bottom:20px">
+  <button class="tab active" id="ipmi-b2b" onclick="switchIpmiMode('b2b')">B2B Loop</button>
+  <button class="tab" id="ipmi-mgmt" onclick="switchIpmiMode('mgmt')">Mgmt Switch</button>
+  <button class="tab" id="ipmi-ssh" onclick="switchIpmiMode('ssh')">SSH Access</button>
+</div>
+
+<!-- B2B Loop diagram -->
+<div id="ipmi-view-b2b">
+<div class="server-panel" style="padding:16px 8px">
+  <img src="b2b/supermicro_b2b_ipmi_loop_v5.svg" alt="B2B IPMI Loop — Supermicro 1U" style="width:100%;display:block">
+</div>
+
+<div style="margin-top:20px">
+  <h3 style="font-size:16px;color:var(--text1);margin-bottom:8px">How B2B IPMI Works</h3>
+  <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:12px">
+    In a back-to-back (B2B) IPMI configuration, each server's <strong>BMC port</strong> is directly cabled to the <strong>GbE1 port</strong> of the next server in the rack. The last server loops back to the first, forming a daisy-chain ring.
+  </p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px">
+      <h4 style="font-size:13px;color:var(--accent);margin-bottom:4px">Advantages</h4>
+      <ul style="font-size:12px;color:var(--text2);padding-left:16px;margin:0;line-height:1.6">
+        <li>No switch required — zero cost</li>
+        <li>Simple cabling between adjacent servers</li>
+        <li>Self-contained within the rack</li>
+        <li>Works with any number of servers</li>
+      </ul>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px">
+      <h4 style="font-size:13px;color:#dc2626;margin-bottom:4px">Considerations</h4>
+      <ul style="font-size:12px;color:var(--text2);padding-left:16px;margin:0;line-height:1.6">
+        <li>Must SSH hop through servers to reach BMC</li>
+        <li>If a server in the chain is down, chain breaks</li>
+        <li>Shared GbE port carries both OS + IPMI traffic</li>
+        <li>Requires proper IP planning (same subnet)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Mgmt Switch diagram -->
+<div id="ipmi-view-mgmt" style="display:none">
+<div class="server-panel" style="padding:16px 8px">
+  <img src="b2b/ipmi_mgmt_switch_simple_v2.svg" alt="IPMI via Management Switch" style="width:100%;display:block">
+</div>
+
+<div style="margin-top:20px">
+  <h3 style="font-size:16px;color:var(--text1);margin-bottom:8px">IPMI via Management Switch</h3>
+  <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:12px">
+    Each server's shared <strong>GbE1 port</strong> (carrying both OS IP and IPMI IP) connects to a simple unmanaged switch. An admin laptop also connects to the same switch, giving direct access to all BMCs and OS interfaces without SSH hopping.
+  </p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px">
+      <h4 style="font-size:13px;color:var(--accent);margin-bottom:4px">Advantages</h4>
+      <ul style="font-size:12px;color:var(--text2);padding-left:16px;margin:0;line-height:1.6">
+        <li>Direct access to every BMC — no SSH hops</li>
+        <li>No dependency on server OS being up</li>
+        <li>Simple unmanaged switch is sufficient</li>
+        <li>Easy to scale — just add ports</li>
+      </ul>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px">
+      <h4 style="font-size:13px;color:#dc2626;margin-bottom:4px">Considerations</h4>
+      <ul style="font-size:12px;color:var(--text2);padding-left:16px;margin:0;line-height:1.6">
+        <li>Requires an additional switch (small cost)</li>
+        <li>Extra cabling to the switch</li>
+        <li>Switch is a single point of failure for mgmt</li>
+        <li>Shared GbE port carries OS + IPMI traffic</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SSH Access diagram -->
+<div id="ipmi-view-ssh" style="display:none">
+<div class="server-panel" style="padding:16px 8px">
+  <img src="b2b/ssh_ipmi_3server_v4.svg" alt="Accessing IPMI via SSH" style="width:100%;display:block">
+</div>
+
+<div style="margin-top:20px">
+  <h3 style="font-size:16px;color:var(--text1);margin-bottom:8px">Accessing IPMI via SSH</h3>
+  <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:12px">
+    In a B2B configuration, to reach a BMC you SSH into the server whose <strong>GbE1</strong> is connected to that BMC, then use <code style="background:var(--bg2);padding:1px 5px;border-radius:3px;font-size:12px">ipmitool</code> locally. The admin laptop connects to the high-speed management network and hops through to reach the IPMI chain.
+  </p>
+  <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:14px;margin-top:12px">
+    <h4 style="font-size:13px;color:var(--accent);margin-bottom:8px">Common IPMI Commands</h4>
+    <pre style="font-size:11px;color:var(--text1);line-height:1.7;margin:0;white-space:pre-wrap"><span style="color:var(--text3)"># Check power status</span>
+ipmitool -I lanplus -H 192.168.3.1 -U admin -P password chassis power status
+
+<span style="color:var(--text3)"># Power cycle a server</span>
+ipmitool -I lanplus -H 192.168.3.1 -U admin -P password chassis power cycle
+
+<span style="color:var(--text3)"># Access serial-over-LAN console</span>
+ipmitool -I lanplus -H 192.168.3.1 -U admin -P password sol activate
+
+<span style="color:var(--text3)"># Check sensor readings</span>
+ipmitool -I lanplus -H 192.168.3.1 -U admin -P password sensor list
+
+<span style="color:var(--text3)"># Open BMC web UI (from browser)</span>
+https://192.168.3.1</pre>
+  </div>
+</div>
+</div>
+
+</div><!-- end page-ipmi -->
+
+<!-- =============================== -->
 <!-- PAGE: NETWORK DESIGN             -->
 <!-- =============================== -->
 <div id="page-netdesign" class="page">
@@ -3156,6 +3346,53 @@ const detailContent={
       </ul>
     </div>
   `,
+  ipmi:`
+    <h3>IPMI Reference</h3>
+    <div class="detail-section">
+      <h4>What is IPMI?</h4>
+      <p>IPMI (Intelligent Platform Management Interface) provides <strong>out-of-band management</strong> via the BMC (Baseboard Management Controller). It works independently of the OS — you can power on/off, access console, and monitor hardware even when the server is offline.</p>
+    </div>
+    <div class="detail-divider"></div>
+    <div class="detail-section">
+      <h4>BMC Interface</h4>
+      <p>On VAST servers, the BMC shares the first gigabit port:</p>
+      <ul>
+        <li><span class="detail-badge db-amber" style="background:#FEF3C7;color:#92400E">BMC</span> enp12s0f4u1u1 — dedicated BMC interface</li>
+        <li>Shares physical GbE1 port with OS traffic</li>
+        <li>Separate IP address on same subnet</li>
+      </ul>
+    </div>
+    <div class="detail-divider"></div>
+    <div class="detail-section">
+      <h4>B2B Cabling Pattern</h4>
+      <p>Back-to-back: each server's <strong>BMC port</strong> cables to the <strong>GbE1</strong> of the next server. Last server loops back to first.</p>
+      <ul>
+        <li>No switch needed — direct cables only</li>
+        <li>Must SSH hop through OS to reach remote BMC</li>
+        <li>Chain breaks if intermediate server is down</li>
+      </ul>
+    </div>
+    <div class="detail-divider"></div>
+    <div class="detail-section">
+      <h4>Mgmt Switch Pattern</h4>
+      <p>All servers' GbE1 ports connect to a simple <strong>unmanaged switch</strong>. Admin laptop plugs into the same switch.</p>
+      <ul>
+        <li>Direct access to every BMC — no hops</li>
+        <li>Works even when servers are powered off</li>
+        <li>8-port unmanaged switch is sufficient for small clusters</li>
+      </ul>
+    </div>
+    <div class="detail-divider"></div>
+    <div class="detail-section">
+      <h4>IP Addressing</h4>
+      <p>Typical IPMI subnet: <strong>192.168.3.0/24</strong></p>
+      <ul>
+        <li>BMC IPs: 192.168.3.1, .2, .3 ...</li>
+        <li>OS IPs: 192.168.3.11, .12, .13 ...</li>
+        <li>Admin laptop: 192.168.3.100</li>
+      </ul>
+    </div>
+  `,
   topo:`
     <h3>Topology Reference</h3>
     <div class="detail-section">
@@ -3256,10 +3493,19 @@ function switchPage(id,el){
   document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
   el.classList.add('active');
-  if(id==='topo'){updateTopoDetail()}else if(id==='netdesign'){document.getElementById('detail-panel').innerHTML=detailContent.netdesign;renderNetDesign();updateNdDesc();}else{document.getElementById('detail-panel').innerHTML=detailContent[id]}
+  if(id==='topo'){updateTopoDetail()}else if(id==='netdesign'){document.getElementById('detail-panel').innerHTML=detailContent.netdesign;renderNetDesign();updateNdDesc();}else if(detailContent[id]){document.getElementById('detail-panel').innerHTML=detailContent[id]}else{document.getElementById('detail-panel').innerHTML=detailContent.node}
   document.querySelector('.sidebar').classList.remove('open');
   window.scrollTo(0,0);
 }
+/* ===== IPMI mode switching ===== */
+function switchIpmiMode(mode){
+  ['b2b','mgmt','ssh'].forEach(m=>{
+    document.getElementById('ipmi-view-'+m).style.display=m===mode?'':'none';
+    const btn=document.getElementById('ipmi-'+m);
+    btn.classList.toggle('active',m===mode);
+  });
+}
+
 // Init detail panel
 document.getElementById('detail-panel').innerHTML=detailContent.node;
 
