@@ -3476,7 +3476,7 @@ const detailContent={
       <h4>Converged — Single NIC</h4>
       <p>Only the <span class="detail-badge db-green">Backend NIC</span> is present. It handles both cluster mesh <em>and</em> client VIP traffic via <strong>SR-IOV virtual functions</strong>. The physical NIC connects to the same VAST leaf pair.</p>
       <ul>
-        <li>VIPs are served through SR-IOV VFs on the backend NIC</li>
+
         <li>Cluster mesh runs on PF sub-interfaces (VLAN 69)</li>
         <li>Further reduces hardware — no separate frontend NIC required</li>
       </ul>
