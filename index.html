@@ -750,8 +750,9 @@ Slave queue ID: 0
     <text x="349" y="89" text-anchor="middle" font-size="6" fill="#8A8985" font-family="sans-serif">194f1</text>
     <rect x="382" y="74" width="50" height="22" rx="3" fill="#fff" stroke="#c2c0b6" stroke-width=".8"/>
     <text x="407" y="89" text-anchor="middle" font-size="6" fill="#8A8985" font-family="sans-serif">193f0</text>
-    <rect x="440" y="74" width="50" height="22" rx="3" fill="#fff" stroke="#c2c0b6" stroke-width=".8"/>
-    <text x="465" y="89" text-anchor="middle" font-size="6" fill="#8A8985" font-family="sans-serif">193f1</text>
+    <rect x="440" y="74" width="56" height="22" rx="3" fill="#fff" stroke="#c2c0b6" stroke-width=".8"/>
+    <text x="468" y="84" text-anchor="middle" font-size="7" fill="#5F5E5A" font-family="sans-serif">tech</text>
+    <text x="468" y="93" text-anchor="middle" font-size="6" fill="#8A8985" font-family="sans-serif">193f1</text>
   </g>
 </svg>
 </div>
@@ -1886,8 +1887,9 @@ Slave queue ID: 0
     <text x="349" y="89" text-anchor="middle" font-size="6" fill="#8A8985" font-family="sans-serif">194f1</text>
     <rect x="382" y="74" width="50" height="22" rx="3" fill="#fff" stroke="#c2c0b6" stroke-width=".8"/>
     <text x="407" y="89" text-anchor="middle" font-size="6" fill="#8A8985" font-family="sans-serif">193f0</text>
-    <rect x="440" y="74" width="50" height="22" rx="3" fill="#fff" stroke="#c2c0b6" stroke-width=".8"/>
-    <text x="465" y="89" text-anchor="middle" font-size="6" fill="#8A8985" font-family="sans-serif">193f1</text>
+    <rect x="440" y="74" width="56" height="22" rx="3" fill="#fff" stroke="#c2c0b6" stroke-width=".8"/>
+    <text x="468" y="84" text-anchor="middle" font-size="7" fill="#5F5E5A" font-family="sans-serif">tech</text>
+    <text x="468" y="93" text-anchor="middle" font-size="6" fill="#8A8985" font-family="sans-serif">193f1</text>
   </g>
 </svg>
 </div>
@@ -2978,6 +2980,7 @@ Slave queue ID: 0
 
 <!-- B2B Loop diagram -->
 <div id="ipmi-view-b2b">
+<div style="margin-bottom:12px;padding:8px 12px;border-radius:6px;border-left:3px solid #0C447C;background:#E6F1FB;font-size:12px;color:var(--text)"><strong>Note:</strong> This diagram shows the B2B loop when management is <strong>outband</strong> — IPMI uses the dedicated BMC port daisy-chained via GbE1.</div>
 <div class="server-panel" style="padding:16px 8px">
   <img src="b2b/supermicro_b2b_ipmi_loop_v5.svg" alt="B2B IPMI Loop — Supermicro 1U" style="width:100%;display:block">
 </div>
@@ -3002,7 +3005,6 @@ Slave queue ID: 0
       <ul style="font-size:12px;color:var(--text2);padding-left:16px;margin:0;line-height:1.6">
         <li>Must SSH hop through servers to reach BMC</li>
         <li>If a server in the chain is down, chain breaks</li>
-        <li>Shared GbE port carries both OS + IPMI traffic</li>
         <li>Requires proper IP planning (same subnet)</li>
       </ul>
     </div>
@@ -3046,6 +3048,7 @@ Slave queue ID: 0
 
 <!-- SSH Access diagram -->
 <div id="ipmi-view-ssh" style="display:none">
+<div style="margin-bottom:12px;padding:8px 12px;border-radius:6px;border-left:3px solid #0C447C;background:#E6F1FB;font-size:12px;color:var(--text)"><strong>Note:</strong> This diagram shows the SSH access path when management is <strong>inband</strong> — the admin laptop reaches servers via the high-speed data network, then hops through to the IPMI chain.</div>
 <div class="server-panel" style="padding:16px 8px">
   <img src="b2b/ssh_ipmi_3server_v4.svg" alt="Accessing IPMI via SSH" style="width:100%;display:block">
 </div>
@@ -3058,19 +3061,19 @@ Slave queue ID: 0
   <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:14px;margin-top:12px">
     <h4 style="font-size:13px;color:var(--accent);margin-bottom:8px">Common IPMI Commands</h4>
     <pre style="font-size:11px;color:var(--text1);line-height:1.7;margin:0;white-space:pre-wrap"><span style="color:var(--text3)"># Check power status</span>
-ipmitool -I lanplus -H 192.168.3.1 -U admin -P password chassis power status
+ipmitool -I lanplus -H 10.10.0.1 -U admin -P password chassis power status
 
 <span style="color:var(--text3)"># Power cycle a server</span>
-ipmitool -I lanplus -H 192.168.3.1 -U admin -P password chassis power cycle
+ipmitool -I lanplus -H 10.10.0.1 -U admin -P password chassis power cycle
 
 <span style="color:var(--text3)"># Access serial-over-LAN console</span>
-ipmitool -I lanplus -H 192.168.3.1 -U admin -P password sol activate
+ipmitool -I lanplus -H 10.10.0.1 -U admin -P password sol activate
 
 <span style="color:var(--text3)"># Check sensor readings</span>
-ipmitool -I lanplus -H 192.168.3.1 -U admin -P password sensor list
+ipmitool -I lanplus -H 10.10.0.1 -U admin -P password sensor list
 
 <span style="color:var(--text3)"># Open BMC web UI (from browser)</span>
-https://192.168.3.1</pre>
+https://10.10.0.1</pre>
   </div>
 </div>
 </div>
@@ -3385,12 +3388,27 @@ const detailContent={
     <div class="detail-divider"></div>
     <div class="detail-section">
       <h4>IP Addressing</h4>
-      <p>Typical IPMI subnet: <strong>192.168.3.0/24</strong></p>
+      <p><strong>B2B IPMI loop:</strong> Uses the default Supermicro BMC subnet <strong>192.168.3.0/24</strong> — this is hardcoded by the BMC firmware and cannot be changed in B2B mode.</p>
       <ul>
         <li>BMC IPs: 192.168.3.1, .2, .3 ...</li>
-        <li>OS IPs: 192.168.3.11, .12, .13 ...</li>
-        <li>Admin laptop: 192.168.3.100</li>
       </ul>
+      <p style="margin-top:8px"><strong>Mgmt switch (shared port):</strong> You choose your own subnet since traffic goes through a standard Ethernet switch.</p>
+      <ul>
+        <li>BMC IPs: 10.10.0.1, .2, .3 ...</li>
+        <li>OS IPs: 10.10.0.11, .12, .13 ...</li>
+        <li>Admin laptop: 10.10.0.100</li>
+      </ul>
+    </div>
+    <div class="detail-divider"></div>
+    <div class="detail-section">
+      <h4>Outband Mgmt Port Mapping</h4>
+      <p>If you choose to keep <strong>outband management</strong> with B2B IPMI, the gigabit port roles shift:</p>
+      <ul>
+        <li><span class="detail-badge" style="background:#FFF7ED;color:#c2410c">GbE2</span> Becomes the <strong>mgmt port</strong> (moves from GbE1)</li>
+        <li><span class="detail-badge" style="background:#F5F3FF;color:#7c3aed">GbE4</span> Remains the <strong>tech port</strong> (rightmost)</li>
+        <li><span class="detail-badge db-gray">GbE3</span> Unused / spare</li>
+      </ul>
+      <p style="margin-top:6px;font-size:12px;color:var(--text3)">GbE1 is consumed by the IPMI B2B loop, so management traffic shifts one port to the right.</p>
     </div>
   `,
   topo:`
@@ -4162,7 +4180,7 @@ function renderNetDesign(){
   else{wrap.innerHTML=svgSplit();}
 }
 function svgConvergedDual(){
-  return `<svg viewBox="0 0 800 580" width="100%" style="display:block;font-family:inherit">
+  return `<svg viewBox="0 0 800 600" width="100%" style="display:block;font-family:inherit">
   <defs>
     <marker id="ah-blue" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#3b82f6"/></marker>
     <marker id="ah-gray" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#6b7280"/></marker>
@@ -4195,14 +4213,14 @@ function svgConvergedDual(){
   <line x1="340" y1="300" x2="422" y2="300" stroke="#f97316" stroke-width="2" stroke-dasharray="5,3"/>
   <text x="381" y="294" text-anchor="middle" font-size="10" fill="#f97316">ISL</text>
   <!-- VAST Server (Dual NIC — Cisco EBox only) -->
-  <rect x="140" y="445" width="480" height="98" rx="8" fill="var(--bg2)" stroke="var(--border)" stroke-width="1.5"/>
-  <text x="380" y="462" text-anchor="middle" font-size="12" font-weight="600" fill="var(--text)">VAST Server</text>
-  <rect x="291" y="467" width="178" height="22" rx="11" fill="#FEF2F2" stroke="#dc2626" stroke-width="1.5"/>
-  <text x="380" y="482" text-anchor="middle" font-size="10" font-weight="700" fill="#dc2626">&#9888; Cisco EBox Only</text>
-  <rect x="156" y="492" width="174" height="42" rx="6" fill="#F0FDF4" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="243" y="518" text-anchor="middle" font-size="12" font-weight="600" fill="#22c55e">Frontend NIC</text>
-  <rect x="450" y="492" width="154" height="42" rx="6" fill="#FFF7ED" stroke="#f97316" stroke-width="1.5"/>
-  <text x="527" y="518" text-anchor="middle" font-size="12" font-weight="600" fill="#f97316">Backend NIC</text>
+  <rect x="140" y="445" width="480" height="120" rx="8" fill="var(--bg2)" stroke="var(--border)" stroke-width="1.5"/>
+  <text x="380" y="464" text-anchor="middle" font-size="12" font-weight="600" fill="var(--text)">VAST Server</text>
+  <rect x="291" y="472" width="178" height="22" rx="11" fill="#FEF2F2" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="380" y="487" text-anchor="middle" font-size="10" font-weight="700" fill="#dc2626">&#9888; Cisco EBox Only</text>
+  <rect x="156" y="510" width="174" height="42" rx="6" fill="#F0FDF4" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="243" y="536" text-anchor="middle" font-size="12" font-weight="600" fill="#22c55e">Frontend NIC</text>
+  <rect x="450" y="510" width="154" height="42" rx="6" fill="#FFF7ED" stroke="#f97316" stroke-width="1.5"/>
+  <text x="527" y="536" text-anchor="middle" font-size="12" font-weight="600" fill="#f97316">Backend NIC</text>
   <!-- Clients → Customer switches (symmetric V from center) -->
   <line x1="380" y1="82" x2="249" y2="144" stroke="#3b82f6" stroke-width="2" marker-end="url(#ah-blue)"/>
   <line x1="380" y1="82" x2="513" y2="144" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#ah-blue)"/>
@@ -4214,13 +4232,13 @@ function svgConvergedDual(){
   <line x1="513" y1="204" x2="252" y2="270" stroke="#6b7280" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#ah-gray)"/>
   <text x="130" y="240" text-anchor="middle" font-size="10" fill="#6b7280">uplinks</text>
   <!-- Frontend NIC → VAST Leaf pair -->
-  <line x1="249" y1="492" x2="249" y2="330" stroke="#22c55e" stroke-width="2" marker-end="url(#ah-green)"/>
-  <line x1="270" y1="492" x2="505" y2="330" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#ah-green)"/>
-  <text x="184" y="418" text-anchor="middle" font-size="11" fill="#22c55e">VIP traffic</text>
+  <line x1="249" y1="510" x2="249" y2="330" stroke="#22c55e" stroke-width="2" marker-end="url(#ah-green)"/>
+  <line x1="270" y1="510" x2="505" y2="330" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#ah-green)"/>
+  <text x="184" y="424" text-anchor="middle" font-size="11" fill="#22c55e">VIP traffic</text>
   <!-- Backend NIC → VAST Leaf pair -->
-  <line x1="513" y1="492" x2="513" y2="330" stroke="#f97316" stroke-width="2" marker-end="url(#ah-orange)"/>
-  <line x1="470" y1="492" x2="268" y2="330" stroke="#f97316" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#ah-orange)"/>
-  <text x="585" y="412" text-anchor="middle" font-size="11" fill="#f97316">Cluster mesh</text>
+  <line x1="513" y1="510" x2="513" y2="330" stroke="#f97316" stroke-width="2" marker-end="url(#ah-orange)"/>
+  <line x1="470" y1="510" x2="268" y2="330" stroke="#f97316" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#ah-orange)"/>
+  <text x="585" y="424" text-anchor="middle" font-size="11" fill="#f97316">Cluster mesh</text>
   <!-- Callout -->
   <rect x="642" y="22" width="146" height="142" rx="8" fill="#FFF7ED" stroke="#fed7aa" stroke-width="1.5"/>
   <text x="715" y="50" text-anchor="middle" font-size="12" font-weight="700" fill="#c2410c">Both NICs</text>
